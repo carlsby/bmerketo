@@ -1,0 +1,108 @@
+.sales {
+padding-bottom: 55px;
+width: 100%;
+background-color: $color-theme-2;
+
+    .container{
+        padding: 0;
+
+        .grid-container {
+            margin-top: 25px;
+            display: grid;
+            grid-template-columns: 1fr;
+            width: 60%;
+            margin: 0 auto;
+            gap: 10px;
+            background-color: $color-theme-2;
+
+            @include lg {
+                margin-top: 50px;
+                grid-template-columns: 1fr 1fr 1fr;
+                width: 95%;
+                gap: 50px;
+            }
+
+            .grid-item {
+                margin-top: 50px;
+                width: 100%;
+                background-color: white;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                
+                .sell-header {
+                    margin-top: 25px;
+                    text-align: center;
+                    color: $color-theme-1;
+                    font-size: 18px;
+                    font-weight: $font-weight-medium;
+
+                    @include lg {
+                        margin-top: 70px;
+                    }
+                }
+
+                .discount {
+                    text-align: center;
+                    font-size: 50px;
+                    color: $color-dark-2;
+                    margin-bottom: 15px;
+                    font-weight: $font-weight-black;
+                }
+
+                .sell-footer {
+                    text-align: center;
+                    font-size: 20px;
+                    color: $color-dark-2;
+                    font-weight: $font-weight-bold;
+                    margin-bottom: 15px;
+                }
+
+                .offer-text {
+                    text-align: center;
+                    margin-bottom: 20px;
+
+                    @include lg {
+                        margin-left: 50px;
+                        margin-right: 50px;
+                    }
+                }
+
+                .btn-discover-more {
+                    display: block;
+                    margin: 0 auto;
+                    border: none;
+                }
+
+                .product-name {
+                    margin-top: 20px;
+                    margin-left: 15px;
+                }
+
+                .product-discount-price {
+                    margin-top: 25px;
+                    margin-left: 15px;
+                    text-decoration: line-through;
+                    display: inline-block;
+                    font-size: 15px;
+                }
+                
+                .product-price {
+                    margin-left: 15px;
+                    font-size: 15px;
+                    margin-right: 80px;
+
+                    @include lg {
+                        margin-right: 220px;
+                    }
+                }
+
+                #cart {
+                    margin-bottom: 20px;
+                }
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+.banner {
+    padding-top: 80px;
+    height: 200px;
+    width: 100%;
+    margin-bottom: 50px;
+    background-color: #e1e1e1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include lg {
+        height: 300px;
+    }
+
+    .banner-title {
+        color: $color-dark-1;
+        font-size: 2.2rem;
+        font-family: $font-poppins;
+        font-weight: $font-weight-semi-bold;
+
+        ul {
+            padding: 0;
+            margin: 0;
+            line-height: 1.1vh;
+            text-align: center;
+
+            li {
+                list-style: none;
+                display: inline;
+                font-size: 1.1rem;
+
+                a {
+                    color: $color-dark-3;
+                    font-weight: $font-weight-light;
+                }
+            }
+        }
+    }
+}

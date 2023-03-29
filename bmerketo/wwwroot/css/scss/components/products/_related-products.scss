@@ -1,0 +1,53 @@
+.rp-section {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+
+    @include lg {
+        width: 58%;
+    }
+
+    .rp-title {
+        font-size: 1.4rem;
+        color: $color-dark-2;
+        font-weight: $font-weight-semi-bold;
+        margin-bottom: 25px;
+    }
+
+    .rp-grid-con {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr 1fr;
+
+        @include lg {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .rp-grid-item {
+
+            .rp-price-title {
+                margin-top: 20px;
+                color: $color-dark-2;
+                font-weight: $font-weight-medium;
+                font-size: 0.73rem;
+
+                @include lg {
+                    font-size: 0.78rem;
+                }
+
+                @include xl {
+                    font-size: 1rem;
+                }
+            }
+
+            .rp-discount-price {
+                text-decoration: line-through;
+                display: inline-block;
+            }
+        }
+    }
+}

@@ -1,0 +1,108 @@
+.collection {
+    margin-top: 50px;
+    .container {
+
+        .title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 30px;
+            color: $color-dark-1;
+            font-weight: $font-weight-black;
+        }
+
+        .breadcrumb-con {
+            margin-bottom: 30px;
+            width: 100%;
+
+            .breadcrumb {
+                margin: 0 auto;
+                width: 100%;
+
+                @include lg {
+                    width: 100%;
+                    justify-content: center;
+                }
+                a {
+                    color: $color-dark-3;
+                }
+
+                li {
+                    a {
+                        color: $color-dark-3;
+                    }
+                }
+
+                li+li:before {
+                    padding: 8px;
+                    content: "/\00a0";
+                }
+            } 
+        }
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 80%;
+        margin: 0 auto;
+        gap: 20px;
+
+        @include lg {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            width: 60%;
+            margin: 0 auto;
+            gap: 30px;
+        }
+
+        .grid-item {
+            width: 100%;
+            margin-bottom: 0px;
+
+            @include lg {
+                margin-bottom: 50px;
+            }
+    
+            img {
+                width: 100%;
+                margin-bottom: 5px;
+            
+                @include lg {
+                    margin-bottom: 15px;
+                }
+            }
+
+            .product-name {
+                font-weight: $font-weight-medium;
+                color: $color-dark-1;
+                font-size: 0.8rem;
+
+                @include lg {
+                    font-size: 1.1rem;
+                }
+            }
+
+            .product-price {
+                font-size: 15px;
+                font-weight: $font-weight-regular;
+                color: $color-dark-3;
+            }
+
+            .product-discount-price {
+                display: inline-block;
+                text-decoration: line-through;
+                margin-right: 20px;
+            }
+        }
+    }
+
+    .btn-load-more {
+        display: block;
+        margin: 0 auto;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+
+        #loading {
+            font-size: 12px;
+        }
+    }
+}

@@ -1,0 +1,50 @@
+.pt-dn-section {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 25px;
+
+    @include lg {
+        width: 58%;
+    }
+
+    .pt-dn-title {
+        color: $color-dark-2;
+        font-weight: $font-weight-semi-bold;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+
+        @include lg {
+            font-size: 1.4rem;
+        }
+    }
+
+    .dn-grid-container {
+        display: block;
+
+        @include lg {
+            display: grid;
+            gap: 60px;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .dn-grid-item {
+            margin: 0 auto;
+
+            .pt-dn-desc {
+                font-size: 1rem;
+                max-height: 100px;
+                overflow-y: scroll;
+    
+                @include lg {
+                    max-height: none;
+                    overflow-y: visible;
+                }
+            }
+    
+            img {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+    }
+}
