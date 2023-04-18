@@ -1,0 +1,53 @@
+﻿@model ProductRegistrationViewModel
+@{ ViewData["Title"] = "Register new product";}
+
+
+<div class="d-flex justify-content-center">
+    <div class="col-6 mb-5">
+
+        <form method="post" novalidate>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control"/>
+                <small><span asp-validation-for="Name" class="text-danger"></span></small>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <small><span asp-validation-for="Price" class="text-danger"></span></small>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ImageUrl" class="form-label"></label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <small><span asp-validation-for="ImageUrl" class="text-danger"></span></small>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="CategoryId" class="form-label"></label>
+                <select asp-for="CategoryId" class="form-control">
+                    <option value="">--Select a category--</option>
+                    <option value="1">Mobile</option>
+                    <option value="2">Clothes</option>
+                    <option value="3">Laptop</option>
+                    <option value="4">Beauty</option>
+                </select>
+                <small><span asp-validation-for="CategoryId" class="text-danger"></span></small>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                <small><span asp-validation-for="Description" class="text-danger"></span></small>
+            </div>
+
+            <div class="d-grid mt-2">
+                <button type="submit" class="btn-theme">CREATE</button>
+            </div>
+        </form>
+    </div>
+</div>

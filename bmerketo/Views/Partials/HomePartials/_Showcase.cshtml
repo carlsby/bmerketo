@@ -1,12 +1,25 @@
-﻿<section class="showcase">
-    <div class="container">
-        <div class="content">
-            <div class="ingress">WELCOME TO BMERKETO SHOP</div>
-            <div class="title">Exclusive Chair gold Collection.</div>
-            <button class="btn-theme">SHOP NOW</button>
+﻿@inject ShowCaseService showCaseService;
+@{
+    var showcase = showCaseService.GetLatest();
+}
+
+@if (showcase != null)
+{
+    <section class="showcase">
+        <div class="container">
+            <div class="content">
+                <div class="ingress">@showcase?.Ingress</div>
+                <div class="title">@showcase?.Title</div>
+
+                @if (!string.IsNullOrEmpty(showcase?.Button?.Url) && !string.IsNullOrEmpty(showcase?.Button?.Content))
+                {
+                    <a href="@showcase?.Button?.Url" class="btn-theme">@showcase?.Button?.Content</a>
+                }
+
+            </div>
+            <div class="content-img">
+                <img src="@showcase?.ImageUrl" alt="@showcase?.Title">
+            </div>
         </div>
-        <div class="content-img">
-            <img src="images/placeholders/625x647.svg" alt="">
-        </div>
-    </div>
-</section>
+    </section>
+}

@@ -16,25 +16,34 @@
         }
     })
 
-    let number = 1;
-    function Plusnumber() {
-        number++;
+} catch { }
+
+let number = 1;
+function Plusnumber() {
+    number++;
+    document.getElementById('input-quantity').value = number;
+}
+
+function Minusnumber() {
+    if (number != 1) {
+        number--;
         document.getElementById('input-quantity').value = number;
     }
+}
 
-    function Minusnumber() {
-        if (number != 1) {
-            number--;
-            document.getElementById('input-quantity').value = number;
-        }
-    }
+function UpdateNumber() {
+    number = parseInt(document.getElementById('input-quantity').value);
+}
 
-    function UpdateNumber() {
+function footerPosition(element, scrollHeight, innerHeight) {
+    try {
+        const _element = document.querySelector(element);
+        const isTallerThanScreen = scrollHeight >= (innerHeight + _element.scrollHeight);
 
-        if (number.isInteger) {
-            number = parseInt(document.getElementById('input-quantity').value);
-        }
-    }
+        _element.classList.toggle('position-fixed-bottom', !isTallerThanScreen);
+        _element.classList.toggle('position-static', isTallerThanScreen);
+    } catch { }
+}
+footerPosition('footer', document.body.scrollHeight, window.innerHeight);
 
-} catch { }
 

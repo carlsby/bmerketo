@@ -1,6 +1,44 @@
-﻿<partial name="/Views/Partials/ProductsPartials/_ProductBanner.cshtml" />
-<partial name="/Views/Partials/ProductsPartials/_ProductDisplay.cshtml" />
-<partial name="/Views/Partials/ProductsPartials/_ProductNavigation.cshtml" />
-<partial name="/Views/Partials/ProductsPartials/_ProductDescription.cshtml" />
-<partial name="/Views/Partials/ProductsPartials/_RelatedProducts.cshtml" />
-<partial name="/Views/Partials/ProductsPartials/_RecentlyViewed.cshtml" />
+﻿@model List<ProductModel>
+
+@{
+    var products = await productService.GetAllAsync();
+    var categories = ViewData["Categories"] as List<CategoryModel>;
+}
+
+<div class="d-flex justify-content-center">
+    <a class="btn-theme p-2" asp-controller="products" asp-action="register">REGISTER PRODUCTS</a>
+</div>
+
+@if (Model.Any() || products.Any())
+{
+    <section class="product-grid-collection mb-5">
+        <div class="container-fluid mb-5 pb-5">
+            <div class="category">
+                <ul>
+                    <li><a asp-controller="products" asp-action="index">All</a></li>
+                    @foreach (var category in categories!)
+                    {
+                        <li><a asp-controller="products" asp-action="index" asp-route-category="@category.CategoryTitle">@category.CategoryTitle</a></li>
+                    }
+                </ul>
+            </div>
+            <div class="product-grid-container">
+                @if (Model.Any())
+                {
+                    @foreach (var product in Model)
+                    {
+                        <div class="product-grid-item">
+                            <img src="@product.ProductImg" alt="@product.Name">
+                            <div class="product-name">@product.Name</div>
+                            <span class="product-price">$@string.Format("{0:F0}", product.Price)</span>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="text-center">No products found.</div>
+                }
+            </div>
+        </div>
+    </section>
+}

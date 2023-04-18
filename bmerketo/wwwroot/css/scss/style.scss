@@ -19,6 +19,11 @@
 @import './components/products/product-desc';
 @import './components/products/related-products';
 @import './components/products/last-viewed';
+@import './components/products/_products.scss';
 
 @import './components/contacts/_contactform';
 @import './components/contacts/_maps';
+
+@import './components/register/_register.scss';
+
+@import './components/account/_account.scss';

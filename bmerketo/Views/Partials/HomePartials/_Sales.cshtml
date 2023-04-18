@@ -1,27 +1,52 @@
-﻿<section class="sales">
+﻿@model SalesViewModel
+@inject SalesService salesService;
+@{
+    var sales = salesService.GetLatest();
+}
+
+<section class="sales">
     <div class="container">
         <div class="grid-container">
+           @foreach (var sale in Model.SalesItems)
+           {
+                @if (sale.Id == "1")
+                {
+                    <div class="grid-item" id="@sale.ProductName" style="order:0;">
+                        <img src="@sale.ImageUrl" alt="">
+                        <div class="product-name">
+                            @sale.ProductName
+                        </div>
+                        <div class="product-discount-price">
+                            $@sale.DiscountPrice
+                        </div>
+                        <span class="product-price">$@sale.Price</span>
+                        <i id="cart" class="fa-solid fa-cart-plus"></i>
+                    </div>
+                }else
+                {
+                    <div class="grid-item" id="@sale.ProductName" style="order:1;">
+                        <img src="@sale.ImageUrl" alt="">
+                        <div class="product-name">
+                            @sale.ProductName
+                        </div>
+                        <div class="product-discount-price">
+                            $@sale.DiscountPrice
+                        </div>
+                        <span class="product-price">$@sale.Price</span>
+                        <i id="cart" class="fa-solid fa-cart-plus"></i>
+                    </div>
+                }
+           }
+
+           @if(sales != null){
             <div class="grid-item">
-                <img src="images/placeholders/369x310.svg" alt="">
-                <div class="product-name">Table Lamp - scelerisque tempore</div>
-                <div class="product-discount-price">$50.00</div>
-                <span class="product-price">$30.00</span>
-                <i id="cart" class="fa-solid fa-cart-plus"></i>
+                <div class="sell-header">@sales.SellHeader</div>
+                <div class="discount">@sales.Discount</div>
+                <div class="sell-footer">@sales.SellFooter</div>
+                <div class="offer-text">@sales.OfferText</div>
+                <button class="btn-white btn-discover-more">@sales.ButtonText</button>
             </div>
-            <div class="grid-item">
-                <div class="sell-header">UP TO SELL</div>
-                <div class="discount">50% OFF</div>
-                <div class="sell-footer">Get The Best Price</div>
-                <div class="offer-text">Get the best daily offer et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren no sea taki</div>
-                <button class="btn-white btn-discover-more">Discover more</button>
-            </div>
-            <div class="grid-item">
-                <img src="images/placeholders/369x310.svg" alt="">
-                <div class="product-name">Table Lamp - scelerisque tempore</div>
-                <div class="product-discount-price">$50.00</div>
-                <span class="product-price">$30.00</span>
-                <i id="cart" class="fa-solid fa-cart-plus"></i>
-            </div>
+            }
         </div>
     </div>
 </section>

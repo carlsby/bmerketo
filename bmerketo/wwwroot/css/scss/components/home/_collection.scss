@@ -1,5 +1,6 @@
-.collection {
+.grid-collection {
     margin-top: 50px;
+
     .container {
 
         .title {
@@ -22,6 +23,7 @@
                     width: 100%;
                     justify-content: center;
                 }
+
                 a {
                     color: $color-dark-3;
                 }
@@ -32,11 +34,11 @@
                     }
                 }
 
-                li+li:before {
+                li + li:before {
                     padding: 8px;
                     content: "/\00a0";
                 }
-            } 
+            }
         }
     }
 
@@ -46,6 +48,10 @@
         width: 80%;
         margin: 0 auto;
         gap: 20px;
+
+        a:hover {
+            text-decoration: none;
+        }
 
         @include lg {
             grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -58,14 +64,19 @@
             width: 100%;
             margin-bottom: 0px;
 
+            &:hover {
+                transform: scale(1.08);
+                transition: 0.3s;
+            }
+
+
             @include lg {
                 margin-bottom: 50px;
             }
-    
+
             img {
                 width: 100%;
-                margin-bottom: 5px;
-            
+
                 @include lg {
                     margin-bottom: 15px;
                 }

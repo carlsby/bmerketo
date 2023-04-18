@@ -1,62 +1,40 @@
-﻿<section class="collection">
-    <div class="container">
-        <div class="title">Best Collection</div>
-        <div class="breadcrumb-con">
-            <ul class="breadcrumb">
-                <li>All</li>
-                <li><a href="#">Bags</a></li>
-                <li><a href="#">Dress</a></li>
-                <li><a href="#">Decoration</a></li>
-                <li><a href="#">Essentials</a></li>
-                <li><a href="#">Interior</a></li>
-                <li><a href="#">Laptop</a></li>
-                <li><a href="#">Mobile</a></li>
-                <li><a href="#">Beauty</a></li>
-            </ul>
+﻿@model CollectionViewModel
+
+@if (Model != null){
+    <section class="grid-collection">
+        <div class="container">
+            @if (!string.IsNullOrEmpty(Model.Title))
+            {
+                <div class="title">@Model.Title</div>
+            }
+
+            @if (Model.Categories != null)
+            {
+                <div class="breadcrumb-con">
+                    <ul class="breadcrumb">
+                        @foreach (var category in Model.Categories)
+                        {
+                            <li><a href="#">@category</a></li>
+                        }
+                    </ul>
+                </div>
+            }
         </div>
-    </div>
-    <div class="grid-container">
-        <div class="grid-item">
-            <img src="images/placeholders/270x295.svg" alt="">
-            <div class="product-name">Apple watch series</div>
-            <span class="product-price">$30.00</span>
-        </div>
-        <div class="grid-item">
-            <img src="images/placeholders/270x295.svg" alt="">
-            <div class="product-name">Table Lamp</div>
-            <span class="product-price">$30.00</span>
-        </div>
-        <div class="grid-item">
-            <img src="images/placeholders/270x295.svg" alt="">
-            <div class="product-name">laptop thinkpad lenovo</div>
-            <div class="product-price">$30.00</div>
-        </div>
-        <div class="grid-item">
-            <img src="images/placeholders/270x295.svg" alt="">
-            <div class="product-name">Table Lamp</div>
-            <div class="product-price">$30.00</div>
-        </div>
-        <div class="grid-item">
-            <img src="images/placeholders/270x295.svg" alt="">
-            <div class="product-name">Gumshoes black fashion</div>
-            <div class="product-discount-price">$120.00</div>
-            <span class="product-price">$80.00</span>
-        </div>
-        <div class="grid-item">
-            <img src="images/placeholders/270x295.svg" alt="">
-            <div class="product-name">Woman white dress</div>
-            <div class="product-price">$30.00</div>
-        </div>
-        <div class="grid-item">
-            <img src="images/placeholders/270x295.svg" alt="">
-            <div class="product-name">Kettle water boiler</div>
-            <div class="product-price">$30.00</div>
-        </div>
-        <div class="grid-item">
-            <img src="images/placeholders/270x295.svg" alt="">
-            <div class="product-name">Congee cooking rice cooker</div>
-            <div class="product-price">$30.00</div>
-        </div>
-    </div>
-    <button class="btn-white btn-load-more">LOAD MORE<i id="loading" class="fa-solid fa-rotate-right"></i></button>
-</section>
+
+        @if (Model.GridItems != null)
+        {
+            <div class="grid-container">
+                @foreach (var item in Model.GridItems)
+                {
+                    <partial name="/Views/Partials/HomePartials/_GridCollectionItem.cshtml" model="item"/>
+                }
+            </div>
+        }
+
+        @if (Model.LoadMore)
+        {
+            <button class="btn-white btn-load-more">LOAD MORE<i id="loading" class="fa-solid fa-rotate-right"></i></button>
+        }
+
+    </section>
+}
