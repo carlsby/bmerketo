@@ -38,3 +38,14 @@ button {
         background-color: #800416;
     }
 }
+
+.btn-admin {
+    border: none;
+    background-color: $color-blue-denim;
+    color: $color-white;
+
+    &:hover {
+        color: $color-dark-1;
+        background-color: $color-blue-teal;
+    }
+}

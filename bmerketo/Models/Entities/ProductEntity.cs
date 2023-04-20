@@ -7,13 +7,17 @@ public class ProductEntity
     public int Id { get; set; }
     public string Name { get; set; } = null!;
     public string ProductImg { get; set; } = null!;
-    public int CategoryId { get; set; }
-    public CategoryEntity Category { get; set; } = null!;
     public string? Description { get; set; }
+    public bool? IsNew { get; set; }
+    public bool? IsPopular { get; set; }
+    public bool? IsFeatured { get; set; }
+
 
     [Column(TypeName = "money")]
     public decimal Price { get; set; }
 
+    public int CategoryId { get; set; }
+    public CategoryEntity Category { get; set; } = null!;
 
     public static implicit operator ProductModel(ProductEntity entity)
     {
@@ -24,6 +28,9 @@ public class ProductEntity
             ProductImg = entity?.ProductImg,
             Price = entity?.Price,
             Description = entity?.Description,
+            IsNew = entity?.IsNew,
+            IsPopular = entity?.IsPopular,
+            IsFeatured = entity?.IsFeatured,
         };
     }
 }

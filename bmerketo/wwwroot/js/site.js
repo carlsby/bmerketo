@@ -46,4 +46,14 @@ function footerPosition(element, scrollHeight, innerHeight) {
 }
 footerPosition('footer', document.body.scrollHeight, window.innerHeight);
 
+function displayImage(url) {
+    document.getElementById("image-preview").innerHTML = "";
 
+    var img = document.createElement("img");
+    img.setAttribute("src", url);
+    img.style.width = "75px";
+    img.style.height = "75px";
+    img.style.margin = "20px";
+
+    document.getElementById("image-preview").appendChild(img);
+}

@@ -44,26 +44,5 @@ namespace mvc_app_1.Controllers
             ViewData["Title"] = "Specific Product";
             return View();
         }
-
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Register(ProductRegistrationViewModel productRegistrationViewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                if (await _productService.CreateAsync(productRegistrationViewModel))
-                {
-                    return RedirectToAction("Index", "Products");
-                }
-
-                ModelState.AddModelError("", "Something went wrong when trying to create a product");
-            }
-
-            return View();
-        }
     }
 }

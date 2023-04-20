@@ -1,25 +1,13 @@
-﻿@inject ShowCaseService showCaseService;
-@{
-    var showcase = showCaseService.GetLatest();
-}
-
-@if (showcase != null)
-{
+﻿
     <section class="showcase">
         <div class="container">
             <div class="content">
-                <div class="ingress">@showcase?.Ingress</div>
-                <div class="title">@showcase?.Title</div>
-
-                @if (!string.IsNullOrEmpty(showcase?.Button?.Url) && !string.IsNullOrEmpty(showcase?.Button?.Content))
-                {
-                    <a href="@showcase?.Button?.Url" class="btn-theme">@showcase?.Button?.Content</a>
-                }
-
+            <div class="ingress">WELCOME TO BMERKETO SHOP</div>
+            <div class="title"></div>
+                    <a href="bajs" class="btn-theme">SHOP NOW</a>
             </div>
             <div class="content-img">
-                <img src="@showcase?.ImageUrl" alt="@showcase?.Title">
+                <img src="" alt="">
             </div>
         </div>
     </section>
-}

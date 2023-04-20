@@ -10,4 +10,7 @@ public class ProductModel
     public string? ProductImg { get; set; }
     public string? Description { get; set; }
     public decimal? Price { get; set; }
+    public bool? IsNew { get; set; }
+    public bool? IsPopular { get; set; }
+    public bool? IsFeatured { get; set; }
 }

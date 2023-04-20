@@ -46,10 +46,17 @@ public class UserSignUpViewModel
         {
             FirstName = model.FirstName,
             LastName = model.LastName,
+            ProfileImg = model.ProfileImg
+        };
+    }
+
+    public static implicit operator UserAddressEntity(UserSignUpViewModel model)
+    {
+        return new UserAddressEntity
+        {
             StreetName = model.StreetName,
             PostalCode = model.PostalCode,
-            City = model.City,
-            ProfileImg = model.ProfileImg
+            City = model.City
         };
     }
 }

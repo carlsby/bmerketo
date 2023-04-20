@@ -1,7 +1,10 @@
-﻿using bmerketo.Services;
+﻿using bmerketo.Contexts;
+using bmerketo.Services;
 using bmerketo.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace bmerketo.Controllers;
 
@@ -82,6 +85,19 @@ public class AccountController : Controller
         return RedirectToAction("Index");
     }
     #endregion
+
+
+    public IActionResult Edit()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Edit(UserSignUpViewModel model)
+    {
+
+        return View(model);
+    }
 }
 
 

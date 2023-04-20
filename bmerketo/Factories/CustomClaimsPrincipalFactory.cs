@@ -1,4 +1,5 @@
-﻿using bmerketo.Services;
+﻿using bmerketo.Models.Entities;
+using bmerketo.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
@@ -22,10 +23,15 @@ namespace bmerketo.Factories
             claimsIdentity.AddClaims(roles.Select(x => new Claim(ClaimTypes.Role, x)));
 
             var userProfileEntity = await _userService.GetUserProfileAsync(user.Id);
+            var userAddressEntity = await _userService.GetUserProfileAsync(user.Id);
 
             claimsIdentity.AddClaim(new Claim("FullName", $"{userProfileEntity.FirstName} {userProfileEntity.LastName}"));
             claimsIdentity.AddClaim(new Claim("FirstName", $"{userProfileEntity.FirstName}"));
-            claimsIdentity.AddClaim(new Claim("UserAddress", $"{userProfileEntity.StreetName}, {userProfileEntity.PostalCode}, {userProfileEntity.City}"));
+            claimsIdentity.AddClaim(new Claim("LastName", $"{userProfileEntity.LastName}"));
+
+            claimsIdentity.AddClaim(new Claim("ProfilePic", $"{userProfileEntity.ProfileImg}"));
+
+            claimsIdentity.AddClaim(new Claim("PhoneNumber", $"{user.PhoneNumber}"));
 
 
             return claimsIdentity;

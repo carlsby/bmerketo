@@ -8,8 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<ShowCaseService>(); // new ShowCaseService
-builder.Services.AddScoped<SalesService>(); // new SalesService
 builder.Services.AddScoped<UserService>(); // new UserService
 builder.Services.AddScoped<ProductService>(); // new ProductService
 builder.Services.AddScoped<CategoryService>(); // new CategoryService

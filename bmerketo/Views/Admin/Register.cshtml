@@ -1,9 +1,12 @@
 ﻿@model ProductRegistrationViewModel
-@{ ViewData["Title"] = "Register new product";}
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Register product";
+}
 
 
 <div class="d-flex justify-content-center">
-    <div class="col-6 mb-5">
+    <div class="col-6 mb-5 mt-5 pb-5">
 
         <form method="post" novalidate>
 
@@ -23,20 +26,34 @@
 
             <div class="mb-3">
                 <label asp-for="ImageUrl" class="form-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
+                <input asp-for="ImageUrl" class="form-control" onchange="displayImage(this.value)" />
+                <div id="image-preview"></div>
                 <small><span asp-validation-for="ImageUrl" class="text-danger"></span></small>
             </div>
 
             <div class="mb-3">
                 <label asp-for="CategoryId" class="form-label"></label>
                 <select asp-for="CategoryId" class="form-control">
-                    <option value="">--Select a category--</option>
-                    <option value="1">Mobile</option>
-                    <option value="2">Clothes</option>
-                    <option value="3">Laptop</option>
-                    <option value="4">Beauty</option>
+                    <option value="">Select a category</option>
+                    <option value="1">Bags</option>
+                    <option value="2">Dress</option>
+                    <option value="3">Decoration</option>
+                    <option value="4">Essentials</option>
+                    <option value="5">Interior</option>
+                    <option value="6">Laptop</option>
+                    <option value="7">Mobile</option>
+                    <option value="8">Beauty</option>
                 </select>
                 <small><span asp-validation-for="CategoryId" class="text-danger"></span></small>
+            </div>
+
+            <div class="mb-3">
+                <input type="checkbox" asp-for="IsNew">
+                <label asp-for="IsNew"></label><br>
+                <input type="checkbox" asp-for="IsFeatured">
+                <label asp-for="IsFeatured"></label><br>
+                <input type="checkbox" asp-for="IsPopular">
+                <label asp-for="IsPopular"></label><br>
             </div>
 
             <div class="mb-3">
@@ -45,8 +62,8 @@
                 <small><span asp-validation-for="Description" class="text-danger"></span></small>
             </div>
 
-            <div class="d-grid mt-2">
-                <button type="submit" class="btn-theme">CREATE</button>
+            <div class="d-grid mt-2 mb-2">
+                <button type="submit" class="btn-admin">CREATE</button>
             </div>
         </form>
     </div>

@@ -11,4 +11,5 @@ public class IdentityContext : IdentityDbContext
     }
 
     public DbSet<UserProfileEntity> UserProfiles { get; set; }
+    public DbSet<UserAddressEntity> UserAddress { get; set; }
 }

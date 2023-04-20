@@ -1,23 +1,63 @@
 ﻿.product-grid-collection {
     margin-top: 50px;
 
+    .text-center {
+        color: $color-dark-2;
+        font-size: 2.7rem;
+        margin-bottom: 10px;
+        font-weight: $font-weight-semi-bold;
+    }
+
     .container-fluid {
         padding: 0;
+
+        .no-products {
+            text-align: center;
+            margin: 0 auto;
+            width: 300px;
+            border: 1px solid gray;
+            padding: 5px;
+            border-radius: 15px;
+            background-color: $color-theme-1;
+            color: $color-white;
+
+            #broken-heart {
+                margin-right: 5px;
+            }
+
+            @include lg {
+                font-size: 1.3rem;
+            }
+        }
 
         .category {
             margin: 0 auto;
             text-align: center;
             margin-bottom: 20px;
 
+            @include lg {
+                font-size: 1.2rem;
+            }
+
             ul {
                 margin: 0 auto;
+                padding: 0 !important;
                 width: 100%;
                 list-style: none;
 
                 li {
                     display: inline;
+
                     a {
                         color: $color-dark-3;
+
+                        &:hover {
+                            color: $color-theme-1;
+                        }
+
+                        &:active {
+                            color: $color-theme-1;
+                        }
                     }
                 }
 
@@ -38,7 +78,7 @@
 
             @include lg {
                 width: 50%;
-                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
             }
 
             .product-grid-item {

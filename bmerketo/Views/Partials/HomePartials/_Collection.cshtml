@@ -1,40 +1,45 @@
-﻿@model CollectionViewModel
+﻿@model List<ProductModel>
 
-@if (Model != null){
-    <section class="grid-collection">
-        <div class="container">
-            @if (!string.IsNullOrEmpty(Model.Title))
-            {
-                <div class="title">@Model.Title</div>
-            }
+@{
+    var products = await productService.GetAllAsync();
+    var categories = ViewData["Categories"] as List<CategoryModel>;
+}
 
-            @if (Model.Categories != null)
+@if (Model.Any() || products.Any())
+{
+    <section class="product-grid-collection mb-5">
+        <div class="text-center">Best Collection<i class="fa-solid fa-sunglasses ms-2"></i></div>
+        <div class="container-fluid mb-5 pb-5">
+            <div class="category">
+                <ul>
+                    <li><a asp-controller="products" asp-action="index">All</a></li>
+                    @foreach (var category in categories!)
+                    {
+                        <li><a asp-controller="products" asp-action="index" asp-route-category="@category.CategoryTitle">@category.CategoryTitle</a></li>
+                    }
+                </ul>
+            </div>
+
+            @if (Model.Any())
             {
-                <div class="breadcrumb-con">
-                    <ul class="breadcrumb">
-                        @foreach (var category in Model.Categories)
-                        {
-                            <li><a href="#">@category</a></li>
-                        }
-                    </ul>
+                <div class="product-grid-container">
+                    @foreach (var product in Model.Take(8))
+                    {
+                        <div class="product-grid-item">
+                            <img src="@product.ProductImg" alt="@product.Name">
+                            <div class="product-name">@product.Name</div>
+                            <span class="product-price">$@string.Format("{0:F0}", product.Price)</span>
+                        </div>
+                    }
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button>LOAD MORE<i class="fa-solid fa-rotate-right"></i></button>
                 </div>
             }
+            else
+            {
+                <div class="no-products mt-5"><i id="broken-heart" class="fa-solid fa-heart-crack"></i>No products found</div>
+            }
         </div>
-
-        @if (Model.GridItems != null)
-        {
-            <div class="grid-container">
-                @foreach (var item in Model.GridItems)
-                {
-                    <partial name="/Views/Partials/HomePartials/_GridCollectionItem.cshtml" model="item"/>
-                }
-            </div>
-        }
-
-        @if (Model.LoadMore)
-        {
-            <button class="btn-white btn-load-more">LOAD MORE<i id="loading" class="fa-solid fa-rotate-right"></i></button>
-        }
-
     </section>
 }

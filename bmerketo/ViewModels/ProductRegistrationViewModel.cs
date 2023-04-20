@@ -27,6 +27,16 @@ public class ProductRegistrationViewModel
     [DataType(DataType.Currency)]
     public decimal Price { get; set; }
 
+    [Display(Name = "New Collection")]
+    public bool IsNew { get; set; }
+
+    [Display(Name = "Popular Collection")]
+    public bool IsPopular { get; set; }
+
+    [Display(Name = "Featured Collection")]
+    public bool IsFeatured { get; set; }
+
+
 
     public static implicit operator ProductEntity(ProductRegistrationViewModel productRegistrationViewModel)
     {
@@ -36,7 +46,10 @@ public class ProductRegistrationViewModel
             ProductImg = productRegistrationViewModel.ImageUrl,
             Description = productRegistrationViewModel.Description,
             Price = productRegistrationViewModel.Price,
-            CategoryId = productRegistrationViewModel.CategoryId
+            CategoryId = productRegistrationViewModel.CategoryId,
+            IsNew = productRegistrationViewModel.IsNew,
+            IsPopular = productRegistrationViewModel.IsPopular,
+            IsFeatured = productRegistrationViewModel.IsFeatured,
         };
     }
 }

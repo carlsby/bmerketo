@@ -11,10 +11,10 @@ namespace bmerketo.Models.Entities
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public string? ProfileImg { get; set; }
-        public string? StreetName { get; set; }
-        public string? PostalCode { get; set; }
-        public string? City { get; set; }
 
         public IdentityUser User { get; set; } = null!;
+
+        public int AddressId { get; set; }
+        public UserAddressEntity Address { get; set; } = null!;
     }
 }

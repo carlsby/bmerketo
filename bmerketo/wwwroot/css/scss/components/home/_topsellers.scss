@@ -13,6 +13,12 @@
             font-weight: $font-weight-medium;
             color: $color-dark-2;
 
+            .fa-fire {
+                background: -webkit-linear-gradient(red, orange);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
             @include lg {
                 font-size: 30px;
                 margin-bottom: 50px;
@@ -30,7 +36,7 @@
                 grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
                 width: 100%;
             }
-            
+
             .grid-item {
                 width: 100%;
 
@@ -42,7 +48,7 @@
                         margin-bottom: 15px;
                     }
                 }
-            
+
                 .product-name {
                     font-weight: $font-weight-medium;
                     color: $color-dark-1;
@@ -52,14 +58,14 @@
                         font-size: 1.1rem;
                     }
                 }
-    
+
                 .product-discount-price {
                     display: inline-block;
                     text-decoration: line-through;
                     margin-right: 20px;
                     font-size: 15px;
                 }
-    
+
                 .product-price {
                     font-size: 15px;
                     font-weight: $font-weight-regular;
@@ -67,10 +73,10 @@
                 }
             }
         }
-        
+
         .slides {
             text-align: center;
-            
+
             .btn-slide {
                 margin-top: 10px;
                 padding: 5px 12px;

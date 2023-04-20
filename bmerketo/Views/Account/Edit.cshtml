@@ -1,0 +1,24 @@
+﻿@model UserSignUpViewModel
+@{
+    ViewData["Title"] = "Edit Account";
+}
+
+<div class="d-flex justify-content-center mb-5">
+
+    <form method="post" class="col-10 col-xl-3" novalidate>
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label asp-for="ProfileImg" class="form-label">Profile Picture</label>
+            <input asp-for="ProfileImg" class="form-control" type="file" />
+            <small class="text-danger"><span asp-validation-for="ProfileImg"></span></small>
+        </div>
+
+        <div class="mt-5 mb-5">
+            <div class="d-grid">
+                <button type="submit" class="btn btn-theme">UPLOAD IMAGE</button>
+            </div>
+        </div>
+    </form>
+</div>

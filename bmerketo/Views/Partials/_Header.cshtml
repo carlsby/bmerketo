@@ -8,7 +8,7 @@
             <a class="link" asp-controller="contacts" asp-action="Index">Contact</a>
             @if (signInManager.IsSignedIn(User) && User.IsInRole("admin"))
             {
-                <a class="link" asp-action="Index" asp-controller="Admin" class="m-4">Admin</a>
+                <a class="link" asp-controller="admin" asp-action="Index" class="m-4">Admin</a>
             }
             @if (signInManager.IsSignedIn(User))
             {
@@ -17,14 +17,14 @@
                         <i class="fa-solid fa-user"></i>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" asp-action="Index" asp-controller="Account">@User.FindFirst("FirstName")?.Value</a></li>
-                        <li><a class="dropdown-item" asp-action="SignOut" asp-controller="Account">Logout</a></li>
+                        <li><a class="dropdown-item" asp-controller="account" asp-action="Index"> @User.FindFirst("FirstName")?.Value</a></li>
+                        <li><a class="dropdown-item" asp-controller="account" asp-action="signout"> Logout</a></li>
                     </ul>
                 </div>
             }
             else
             {
-                <a class="link" asp-controller="account" asp-action="SignIn">Login</a>
+                <a class="link" asp-controller="account" asp-action="signin">Login</a>
             }
         </nav>
         <nav class="menu-icons">
