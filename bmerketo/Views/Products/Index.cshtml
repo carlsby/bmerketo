@@ -5,6 +5,9 @@
     var categories = ViewData["Categories"] as List<CategoryModel>;
 }
 
+<partial name="/Views/Partials/ProductsPartials/_ProductBanner.cshtml" />
+
+
 @if (Model.Any() || products.Any())
 {
     <section class="product-grid-collection mb-5">
@@ -25,9 +28,11 @@
                     @foreach (var product in Model)
                     {
                         <div class="product-grid-item">
-                            <img src="@product.ProductImg" alt="@product.Name">
-                            <div class="product-name">@product.Name</div>
-                            <span class="product-price">$@string.Format("{0:F0}", product.Price)</span>
+                                        <a asp-controller="products" asp-action="product" asp-route-id="@product.Id">
+                                <img src="@product.ProductImg" alt="@product.Name">
+                                <div class="product-name">@product.Name</div>
+                                <span class="product-price">$@string.Format("{0:F0}", product.Price)</span>
+                            </a>
                         </div>
                     }
                 </div>

@@ -31,6 +31,7 @@ public class ProductEntity
             IsNew = entity?.IsNew,
             IsPopular = entity?.IsPopular,
             IsFeatured = entity?.IsFeatured,
+            Category = entity!.Category
         };
     }
 }

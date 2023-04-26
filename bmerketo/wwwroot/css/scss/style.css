@@ -5,10 +5,6 @@ a {
   text-decoration: none;
   color: #FA3150;
 }
-a:hover {
-  text-decoration: underline;
-  color: #FA3150;
-}
 
 button {
   padding: 10px 35px;
@@ -41,12 +37,12 @@ button:hover {
 
 .btn-admin {
   border: none;
-  background-color: #6F8FAF;
+  background-color: #B7AC44;
   color: #FFFFFF;
 }
 .btn-admin:hover {
   color: #000000;
-  background-color: #008080;
+  background-color: #FFFF00;
 }
 
 .footer {
@@ -94,6 +90,10 @@ html, body {
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.admin-body {
+  background-color: #222222;
 }
 
 header {
@@ -293,11 +293,6 @@ header .toggle {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-@media (min-width: 992px) {
-  .banner {
-    height: 300px;
-  }
 }
 .banner .banner-title {
   color: #000000;
@@ -611,7 +606,12 @@ header .toggle {
 
 .showcase {
   background-color: #F3F2F2;
-  padding: 60px 0;
+  padding: 30px 0 30px;
+}
+@media (min-width: 1200px) {
+  .showcase {
+    padding: 30px 0 40px;
+  }
 }
 .showcase .container {
   display: block;
@@ -637,6 +637,7 @@ header .toggle {
 }
 @media (min-width: 1200px) {
   .showcase .content {
+    margin-left: 170px;
     flex: 1;
     padding-right: 100px;
   }
@@ -659,20 +660,55 @@ header .toggle {
   }
 }
 .showcase .content-img {
-  display: none;
+  width: 100%;
+  mix-blend-mode: multiply;
 }
 @media (min-width: 992px) {
   .showcase .content-img {
     flex: 1;
     display: block;
+    object-fit: contain;
   }
 }
 .showcase img {
-  width: 100%;
-  height: auto;
+  width: 60%;
+  height: 200px;
+  padding: 40px;
+}
+@media (min-width: 768px) {
+  .showcase img {
+    width: 40%;
+    height: 300px;
+  }
+}
+@media (min-width: 992px) {
+  .showcase img {
+    width: 100%;
+    height: 300px;
+  }
+}
+@media (min-width: 1200px) {
+  .showcase img {
+    width: 70%;
+    height: 360px;
+  }
 }
 .showcase a.btn-theme {
   padding: 8px 20px;
+}
+.showcase .mobile-link {
+  display: none;
+}
+@media (max-width: 767px) {
+  .showcase .desktop-link {
+    display: none;
+  }
+  .showcase .mobile-link {
+    display: block;
+    margin-top: 10px;
+    width: 50%;
+    margin: 0 auto;
+  }
 }
 
 .topsellers {
@@ -706,34 +742,47 @@ header .toggle {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 80%;
-  gap: 20px;
+  gap: 10px;
+  justify-items: center;
 }
 @media (min-width: 992px) {
   .topsellers .container .grid-container {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    width: 100%;
   }
 }
 .topsellers .container .grid-container .grid-item {
   width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  border-radius: 5px;
+  padding: 10px;
+}
+.topsellers .container .grid-container .grid-item:hover {
+  transform: scale(1.04);
+  transition: 0.3s;
+  cursor: pointer;
 }
 .topsellers .container .grid-container .grid-item img {
   width: 100%;
-  margin-bottom: 5px;
+  height: 150px;
+  object-fit: contain;
 }
 @media (min-width: 992px) {
   .topsellers .container .grid-container .grid-item img {
-    margin-bottom: 15px;
+    height: 200px;
   }
 }
 .topsellers .container .grid-container .grid-item .product-name {
   font-weight: 500;
   color: #000000;
   font-size: 0.8rem;
+  margin-bottom: 20px;
 }
 @media (min-width: 992px) {
   .topsellers .container .grid-container .grid-item .product-name {
-    font-size: 1.1rem;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
   }
 }
 .topsellers .container .grid-container .grid-item .product-discount-price {
@@ -743,9 +792,13 @@ header .toggle {
   font-size: 15px;
 }
 .topsellers .container .grid-container .grid-item .product-price {
-  font-size: 15px;
-  font-weight: 400;
-  color: #636363;
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #292929;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 .topsellers .container .slides {
   text-align: center;
@@ -1211,47 +1264,60 @@ header .toggle {
 .product-grid-collection .container-fluid .product-grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
-  gap: 20px;
+  gap: 10px;
   text-align: left;
 }
 @media (min-width: 992px) {
   .product-grid-collection .container-fluid .product-grid-container {
-    width: 50%;
+    width: 40%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 .product-grid-collection .container-fluid .product-grid-container .product-grid-item {
   width: 100%;
-  margin-bottom: 20px;
+  position: relative;
+  text-align: center;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  padding: 10px;
+  border-radius: 5px;
 }
 .product-grid-collection .container-fluid .product-grid-container .product-grid-item:hover {
-  transform: scale(1.08);
+  transform: scale(1.04);
   transition: 0.3s;
+  cursor: pointer;
 }
 .product-grid-collection .container-fluid .product-grid-container .product-grid-item .product-name {
   font-weight: 500;
   color: #000000;
   font-size: 0.8rem;
-  margin-left: 40px;
-  margin-top: 5px;
+  margin-bottom: 20px;
 }
 @media (min-width: 992px) {
   .product-grid-collection .container-fluid .product-grid-container .product-grid-item .product-name {
+    margin-bottom: 25px;
     font-size: 0.9rem;
   }
 }
 .product-grid-collection .container-fluid .product-grid-container .product-grid-item .product-price {
-  margin-left: 40px;
+  width: 100%;
   font-size: 0.9rem;
   font-weight: 600;
   color: #292929;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 .product-grid-collection .container-fluid .product-grid-container .product-grid-item img {
   width: 100%;
-  height: 250px;
+  height: 150px;
   object-fit: contain;
+}
+@media (min-width: 992px) {
+  .product-grid-collection .container-fluid .product-grid-container .product-grid-item img {
+    height: 200px;
+  }
 }
 
 .form-section {
@@ -1354,67 +1420,62 @@ header .toggle {
   margin: 0 auto;
   margin-bottom: 10px;
 }
-.acc-con .user-info .welcome {
-  text-align: center;
-}
-.acc-con .user-info .your-info {
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-.acc-con .user-info .user-image {
-  margin-top: 10px;
-  text-align: center;
-  font-size: 3rem;
-  margin-bottom: 30px;
-}
-.acc-con .user-info .user-image .fa-user {
-  border-radius: 5px 20px 5px;
-  background: #FA3150;
-  padding: 8px;
-}
 .acc-con .user-info .info {
   text-align: center;
   margin-bottom: 10px;
   font-size: 1.1rem;
 }
-.acc-con .user-info .title {
-  font-weight: 600;
-  font-size: 1.2rem;
-  text-decoration: underline;
-}
 
-.validation-summary-errors {
+.register .validation-summary-errors {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
-.validation-summary-errors ul {
+.register .validation-summary-errors ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
-textarea {
+.register textarea {
   resize: none;
 }
-
-.form-label {
-  color: #292929 !important;
+.register .form-label {
+  color: #B7AC44 !important;
   font-size: 1.3rem;
 }
-
-select {
-  color: #292929 !important;
-  font-size: 1.3rem !important;
+.register select {
+  color: #B7AC44 !important;
+  font-size: 1rem !important;
+  border: 1px solid #B7AC44 !important;
+}
+.register .form-control {
+  border: 1px solid #B7AC44 !important;
+  color: #B7AC44 !important;
+}
+.register .form-control input:focus {
+  background-color: none !important;
+}
+.register .form-check .form-check-input[type=checkbox] {
+  border: 1px solid #B7AC44;
+  border-radius: 25px;
+}
+.register .form-check .form-check-input {
+  background-color: rgb(33, 37, 41);
+}
+.register .form-check .form-check-input:checked {
+  background-color: #B7AC44 !important;
+}
+.register .form-check .checkbox-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #B7AC44;
 }
 
 .admin-header {
   width: 100%;
   height: 80px;
   z-index: 1;
-  background-color: #6F8FAF;
+  background-color: #B7AC44;
   display: flex;
   padding: 0 20px;
 }
@@ -1441,9 +1502,15 @@ select {
   grid-area: logo;
   display: flex;
   align-items: center;
-  font-size: 27px;
-  font-weight: 700;
+  font-size: 38px;
   color: #000000;
+}
+.admin-header .logo .admin-logo-link {
+  color: #000000;
+  font-family: "Poppins", sans-serif;
+}
+.admin-header .logo #ghost:hover {
+  color: #FFFFFF;
 }
 .admin-header .logo img {
   margin-right: 5px;

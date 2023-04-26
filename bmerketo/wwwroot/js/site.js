@@ -19,20 +19,25 @@
 } catch { }
 
 let number = 1;
+
 function Plusnumber() {
     number++;
     document.getElementById('input-quantity').value = number;
+    UpdateNumber();
 }
 
 function Minusnumber() {
     if (number != 1) {
         number--;
         document.getElementById('input-quantity').value = number;
+        UpdateNumber();
     }
 }
 
 function UpdateNumber() {
     number = parseInt(document.getElementById('input-quantity').value);
+    var price = number * parseFloat(document.getElementById('price').getAttribute('data-price'));
+    document.getElementById('price').innerHTML = '$' + price.toFixed(0);
 }
 
 function footerPosition(element, scrollHeight, innerHeight) {

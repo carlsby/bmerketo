@@ -4,7 +4,7 @@ using bmerketo.Services;
 using bmerketo.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace mvc_app_1.Controllers
+namespace bmkerketo.Controllers
 {
     public class ProductsController : Controller
     {
@@ -39,10 +39,12 @@ namespace mvc_app_1.Controllers
             return View();
         }
 
-        public IActionResult Product()
+        public async Task<IActionResult> Product(int id)
         {
-            ViewData["Title"] = "Specific Product";
-            return View();
+            ViewData["Title"] = "Product " + id;
+            ProductModel model = await _productService.GetSpecificProductAsync(id);
+
+            return View(model);
         }
     }
 }

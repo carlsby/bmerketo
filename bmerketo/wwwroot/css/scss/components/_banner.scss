@@ -7,10 +7,6 @@
     justify-content: center;
     align-items: center;
 
-    @include lg {
-        height: 300px;
-    }
-
     .banner-title {
         color: $color-dark-1;
         font-size: 2.2rem;

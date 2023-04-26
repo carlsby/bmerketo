@@ -1,25 +1,59 @@
-﻿.validation-summary-errors {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+﻿.register {
+    .validation-summary-errors {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
 
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
     }
-}
 
-textarea {
-    resize: none;
-}
+    textarea {
+        resize: none;
+    }
 
-.form-label {
-    color: $color-dark-2 !important;
-    font-size: 1.3rem;
-}
+    .form-label {
+        color: #B7AC44 !important;
+        font-size: 1.3rem;
+    }
 
-select {
-    color: $color-dark-2 !important;
-    font-size: 1.3rem !important;
+    select {
+        color: #B7AC44 !important;
+        font-size: 1rem !important;
+        border: 1px solid #B7AC44 !important;
+    }
+
+    .form-control {
+        border: 1px solid #B7AC44 !important;
+        color: #B7AC44 !important;
+
+        input:focus {
+            background-color: none !important;
+        }
+    }
+
+    .form-check {
+
+        .form-check-input[type=checkbox] {
+            border: 1px solid #B7AC44;
+            border-radius: 25px;
+        }
+
+        .form-check-input {
+            background-color: rgb(33,37,41);
+        }
+
+        .form-check-input:checked {
+            background-color: #B7AC44 !important;
+        }
+
+        .checkbox-label {
+            font-size: 0.9rem;
+            font-weight: $font-weight-medium;
+            color: #B7AC44;
+        }
+    }
 }

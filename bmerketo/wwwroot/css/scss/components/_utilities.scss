@@ -2,10 +2,7 @@ a {
     text-decoration: none;
     color: $color-theme-1;
 
-    &:hover {
-        text-decoration: underline;
-        color: $color-theme-1;
-    }
+
 }
 
 button {
@@ -41,11 +38,11 @@ button {
 
 .btn-admin {
     border: none;
-    background-color: $color-blue-denim;
+    background-color: #B7AC44;
     color: $color-white;
 
     &:hover {
         color: $color-dark-1;
-        background-color: $color-blue-teal;
+        background-color: #FFFF00;
     }
 }

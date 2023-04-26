@@ -1,39 +1,26 @@
-﻿<section class="topsellers">
+﻿@model List<ProductModel>
+@{
+    var products = await productService.GetAllAsync();
+}
+
+<section class="topsellers">
     <div class="container">
-        <div class="header-title"><i class="fa-solid fa-fire"></i>Top selling products in this week<i class="fa-solid fa-fire"></i></div>
-        <div class="grid-container">
-            <div class="grid-item">
-                <img src="images/placeholders/270x295.svg" alt="">
-                <div class="product-name">Apple watch series</div>
-                <div class="product-discount-price">$120.00</div>
-                <span class="product-price">$80.00</span>
-            </div>
-            <div class="grid-item">
-                <img src="images/placeholders/270x295.svg" alt="">
-                <div class="product-name">Gumshoes black fashion</div>
-                <div class="product-discount-price">$120.00</div>
-                <span class="product-price">$80.00</span>
-            </div>
-            <div class="grid-item">
-                <img src="images/placeholders/270x295.svg" alt="">
-                <div class="product-name">Woman white dress</div>
-                <span class="product-price">$30.00</span>
-            </div>
-            <div class="grid-item">
-                <img src="images/placeholders/270x295.svg" alt="">
-                <div class="product-name">Kettle water boiler</div>
-                <span class="product-price">$30.00</span>
-            </div>
-            <div class="grid-item">
-                <img src="images/placeholders/270x295.svg" alt="">
-                <div class="product-name">Congee cooking rice cooker</div>
-                <span class="product-price">$30.00</span>
-            </div>
-            <div class="grid-item">
-                <img src="images/placeholders/270x295.svg" alt="">
-                <div class="product-name">Pizza tomato sauce kebab</div>
-                <span class="product-price">$30.00</span>
-            </div>
+        <div class="header-title">Top selling products in this week</div>
+        <div class="grid-container justify-content-center mb-3">
+            @foreach (var product in products.Take(8))
+            {
+                if (product.IsPopular == true)
+                {
+                    <div class="grid-item">
+                        <a asp-controller="products" asp-action="product" asp-route-id="@product.Id">
+                            <img src="@product.ProductImg" alt="@product.Name">
+                            <div class="product-name">@product.Name</div>
+                            <span class="product-price">$@string.Format("{0:F0}", product.Price)</span>
+                        </a>
+                    </div>
+                }
+            }
+
         </div>
         <div class="slides">
             <button class="btn-white btn-slide"><i class="fa-solid fa-chevron-left"></i></button>

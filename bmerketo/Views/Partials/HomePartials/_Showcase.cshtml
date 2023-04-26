@@ -1,13 +1,32 @@
-﻿
+﻿@model List<ProductModel>
+
+@{
+    var products = await productService.GetAllAsync();
+    var featuredProducts = products.Where(p => p.IsFeatured == true).ToList();
+    var random = new Random();
+    var randomProductIndex = random.Next(featuredProducts.Count());
+    var randomProduct = featuredProducts[randomProductIndex];
+}
+@if (products.Any())
+{
     <section class="showcase">
         <div class="container">
+
             <div class="content">
-            <div class="ingress">WELCOME TO BMERKETO SHOP</div>
-            <div class="title"></div>
-                    <a href="bajs" class="btn-theme">SHOP NOW</a>
+                <div class="ingress">
+                    WELCOME TO BMERKETO SHOP
+                </div>
+                <div class="title">
+                    @randomProduct.Name
+                </div>
+                <a class="btn-theme desktop-link" asp-controller="products" asp-action="product" asp-route-id="@randomProduct.Id">SHOP NOW</a>
             </div>
+
             <div class="content-img">
-                <img src="" alt="">
+                <img src="@randomProduct.ProductImg" alt="">
+                <a class="btn-theme mobile-link" asp-controller="products" asp-action="product" asp-route-id="@randomProduct.Id">SHOP NOW</a>
             </div>
+
         </div>
     </section>
+}

@@ -1,19 +1,17 @@
 ﻿@model UserSignUpViewModel
 @{ ViewData["Title"] = "My Account"; }
+<section class="banner">
+    <div class="banner-title">
+        <ul>
+            <li>
+                <h1 class="link">Welcome, @User.FindFirst("FirstName")?.Value!</h1>
+            </li>
+        </ul>
+    </div>
+</section>
 <div class="acc-con d-flex justify-content-center">
 
     <div class="user-info">
-        <div class="welcome">
-            <h1>Welcome, @User.FindFirst("FirstName")?.Value!</h1>
-        </div>
-
-        <div class="user-image">
-            <i class="fa-solid fa-user"></i>
-        </div>
-
-        <div class="your-info">
-            Info about you
-        </div>
         <button type="button" id="edit-btn" class="btn btn-theme" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Edit profile
         </button>
@@ -81,19 +79,9 @@
                 </div>
             </div>
         </div>
-        <div class="info">
-            <div class="title">Full name</div>
-            @User?.FindFirst("FullName")?.Value
-        </div>
 
         <div class="info">
-            <div class="title">Email</div>
-            @User?.Identity?.Name
-        </div>
-
-        <div class="info">
-            <div class="title">Address</div>
-            @User?.FindFirst("UserAddress")?.Value
+                <div class="col-12">@User?.FindFirst("FullName")?.Value</div>
         </div>
 
     </div>

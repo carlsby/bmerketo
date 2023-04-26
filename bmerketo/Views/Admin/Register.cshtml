@@ -5,7 +5,7 @@
 }
 
 
-<div class="d-flex justify-content-center">
+<div class="register d-flex justify-content-center">
     <div class="col-6 mb-5 mt-5 pb-5">
 
         <form method="post" novalidate>
@@ -14,26 +14,26 @@
 
             <div class="mb-3">
                 <label asp-for="Name" class="form-label"></label>
-                <input asp-for="Name" class="form-control"/>
+                <input asp-for="Name" class="form-control bg-dark" />
                 <small><span asp-validation-for="Name" class="text-danger"></span></small>
             </div>
 
             <div class="mb-3">
                 <label asp-for="Price" class="form-label"></label>
-                <input asp-for="Price" class="form-control" />
+                <input asp-for="Price" class="form-control bg-dark" />
                 <small><span asp-validation-for="Price" class="text-danger"></span></small>
             </div>
 
             <div class="mb-3">
                 <label asp-for="ImageUrl" class="form-label"></label>
-                <input asp-for="ImageUrl" class="form-control" onchange="displayImage(this.value)" />
+                <input asp-for="ImageUrl" class="form-control bg-dark" onchange="displayImage(this.value)" />
                 <div id="image-preview"></div>
                 <small><span asp-validation-for="ImageUrl" class="text-danger"></span></small>
             </div>
 
             <div class="mb-3">
-                <label asp-for="CategoryId" class="form-label"></label>
-                <select asp-for="CategoryId" class="form-control">
+                <label asp-for="CategoryId" class="form-label bg-dark"></label>
+                <select asp-for="CategoryId" class="form-select bg-dark">
                     <option value="">Select a category</option>
                     <option value="1">Bags</option>
                     <option value="2">Dress</option>
@@ -47,18 +47,20 @@
                 <small><span asp-validation-for="CategoryId" class="text-danger"></span></small>
             </div>
 
-            <div class="mb-3">
-                <input type="checkbox" asp-for="IsNew">
-                <label asp-for="IsNew"></label><br>
-                <input type="checkbox" asp-for="IsFeatured">
-                <label asp-for="IsFeatured"></label><br>
-                <input type="checkbox" asp-for="IsPopular">
-                <label asp-for="IsPopular"></label><br>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" asp-for="IsNew">
+                <label class="checkbox-label" asp-for="IsNew"></label><br>
+
+                <input class="form-check-input" type="checkbox" asp-for="IsFeatured">
+                <label class="checkbox-label" asp-for="IsFeatured"></label><br>
+
+                <input class="form-check-input" type="checkbox" asp-for="IsPopular">
+                <label class="checkbox-label" asp-for="IsPopular"></label><br>
             </div>
 
             <div class="mb-3">
                 <label asp-for="Description" class="form-label"></label>
-                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                <textarea asp-for="Description" class="form-control bg-dark text-white" rows="4"></textarea>
                 <small><span asp-validation-for="Description" class="text-danger"></span></small>
             </div>
 

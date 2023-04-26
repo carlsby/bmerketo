@@ -1,6 +1,10 @@
 .showcase {
     background-color: $color-theme-3;
-    padding: 60px 0;
+    padding: 30px 0 30px;
+
+    @include xl {
+        padding: 30px 0 40px;
+    }
 
     .container {
         display: block;
@@ -24,6 +28,7 @@
         }
 
         @include xl {
+            margin-left: 170px;
             flex: 1;
             padding-right: 100px;
         }
@@ -48,19 +53,55 @@
     }
 
     .content-img {
-        display: none;
+        width: 100%;
+        mix-blend-mode: multiply;
 
         @include lg {
             flex: 1;
             display: block;
+            object-fit: contain;
         }
     }
 
     img {
-        width: 100%;
-        height: auto;
+        width: 60%;
+        height: 200px;
+        padding: 40px;
+
+        @include md {
+            width: 40%;
+            height: 300px;
+        }
+
+        @include lg {
+            width: 100%;
+            height: 300px;
+        }
+
+        @include xl {
+            width: 70%;
+            height: 360px;
+        }
     }
+
     a.btn-theme {
         padding: 8px 20px;
+    }
+
+    .mobile-link {
+        display: none;
+    }
+
+    @media (max-width: 767px) {
+        .desktop-link {
+            display: none;
+        }
+
+        .mobile-link {
+            display: block;
+            margin-top: 10px;
+            width: 50%;
+            margin: 0 auto;
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace bmerketo.Controllers
     {
         private readonly ProductService _productService;
 
-        public AdminController(ProductService productService, CategoryService categoryService)
+        public AdminController(ProductService productService)
         {
             _productService = productService;
         }

@@ -1,4 +1,5 @@
-﻿using bmerketo.Models.Entities;
+﻿using bmerketo.Migrations.Identity;
+using bmerketo.Models.Entities;
 using bmerketo.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
@@ -28,10 +29,6 @@ namespace bmerketo.Factories
             claimsIdentity.AddClaim(new Claim("FullName", $"{userProfileEntity.FirstName} {userProfileEntity.LastName}"));
             claimsIdentity.AddClaim(new Claim("FirstName", $"{userProfileEntity.FirstName}"));
             claimsIdentity.AddClaim(new Claim("LastName", $"{userProfileEntity.LastName}"));
-
-            claimsIdentity.AddClaim(new Claim("ProfilePic", $"{userProfileEntity.ProfileImg}"));
-
-            claimsIdentity.AddClaim(new Claim("PhoneNumber", $"{user.PhoneNumber}"));
 
 
             return claimsIdentity;

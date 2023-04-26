@@ -37,16 +37,12 @@ namespace bmerketo.Services
                     roleName = "admin";
                 }
 
-                // Create a new IdentityUser object and set its properties
                 IdentityUser identityUser = model;
 
-                // Create the user in the database
                 await _userManager.CreateAsync(identityUser, model.Password);
 
-                // Add the user to the specified role
                 await _userManager.AddToRoleAsync(identityUser, roleName);
 
-                // Create a new AddressEntity object and set its properties with the address details from the UserSignUpViewModel
                 UserAddressEntity addressEntity = new UserAddressEntity
                 {
                     StreetName = model.StreetName,
@@ -54,17 +50,15 @@ namespace bmerketo.Services
                     City = model.City
                 };
 
-                // Create a new UserProfileEntity object and set its properties
                 UserProfileEntity userProfileEntity = new UserProfileEntity
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     ProfileImg = model.ProfileImg,
-                    Address = addressEntity, // set the Address property to the newly created AddressEntity
+                    Address = addressEntity,
                     UserId = identityUser.Id
                 };
 
-                // Add the UserProfileEntity to the context and save the changes
                 _identityContext.UserProfiles.Add(userProfileEntity);
                 await _identityContext.SaveChangesAsync();
 

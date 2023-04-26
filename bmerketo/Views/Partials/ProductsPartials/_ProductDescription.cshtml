@@ -1,37 +1,25 @@
-﻿<section class="pt-dn-section">
-    <div class="pt-dn-title">
-        Duis autem vel eum iriure dolor in hendrerit in vulputate
-        velit esse molestie.
-    </div>
-    <div class="dn-grid-container">
-        <div class="dn-grid-item">
-            <div class="pt-dn-desc">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                magna aliquyam erat, sed diam voluptua. At vero eos et cusam
-                et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-                no sea takimata santus est Lorem ipsum dolor sit amet. Lorem
-                ipsum dolor.
-                <br /><br />
-                accusantium laborum pretium hic excepturi harum repellat facilisis
-                convallis potenti, adipiscing lectus aliqua. Asperiores repudiandae
-                ipsam error erat, accusamus, cum taciti unde?
-                <br /><br />
-                Praesentium, pariatur, tempora consequuntur purus sapiente, iaculis
-                vitae consequatur, rhoncus earum eleifend, hendrerit ipsum rhoncus
-                ex error, impedit! Alias laboris sequi curae aptent? Eu sagittis eu,
-                distinctio tortor? Dapibus delectus! Consequuntur luctus.
-                <br /><br />
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-                sed diam voluptua. At vero eos et cusam et justo duo dolores et ea rebum.
-                Stet clita kasd gubergren, no sea takimata santus est Lorem ipsum dolor sit
-                amet. Lorem ipsum dolor.
+﻿@model ProductModel
+
+@{
+    
+}
+
+@if (Model != null)
+{
+    <section class="pt-dn-section">
+        <div class="pt-dn-title">
+            @Model.Name
+        </div>
+        <div class="dn-grid-container">
+            <div class="dn-grid-item">
+                <div class="pt-dn-desc">
+                    @Model.Description
+                </div>
+            </div>
+            <div class="dn-grid-item">
+                <img src="images/placeholders/469x356.svg" alt="">
             </div>
         </div>
-        <div class="dn-grid-item">
-            <img src="images/placeholders/469x356.svg" alt="">
-        </div>
-    </div>
-    <hr>
-</section>
+        <hr>
+    </section>
+}

@@ -12,40 +12,10 @@
             margin-bottom: 10px;
         }
 
-        .welcome{
-            text-align: center;
-        }
-
-        .your-info {
-            text-align: center;
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-            font-weight: $font-weight-semi-bold;
-        }
-        
-        .user-image {
-            margin-top: 10px;
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 30px;
-
-            .fa-user {
-                border-radius: 5px 20px 5px;
-                background: $color-theme-1;
-                padding: 8px;
-            }
-        }
-
         .info {
             text-align: center;
             margin-bottom: 10px;
             font-size: 1.1rem;
-        }
-
-        .title {
-            font-weight: $font-weight-semi-bold;
-            font-size: 1.2rem;
-            text-decoration: underline;
         }
     }
 }
