@@ -84,10 +84,10 @@ public class ProductService
         return products;
     }
 
-    public async Task<ProductModel> GetSpecificProductAsync(int id)
+    public async Task<ProductModel> GetSpecificProductAsync(string name)
     {
         ProductModel products = new ProductModel();
-        products = await _context.Products.Include(p => p.Category).FirstOrDefaultAsync(x => x.Id == id);
+        products = await _context.Products.Include(p => p.Category).FirstOrDefaultAsync(x => x.Name == name);
         return products!;
     }
 }

@@ -1,10 +1,24 @@
 ﻿<header class="admin-header">
     <div class="container">
-        <div class="logo"><a class="admin-logo-link" asp-controller="admin" asp-action="Index"><i class="fa-solid fa-ghost" id="ghost"></i></a></div>
+        <div class="logo">
+            <a class="admin-logo-link" asp-controller="admin" asp-action="Index">
+                <i class="fa-solid fa-ghost" id="ghost"></i>
+            </a>
+            <a class="admin-logo-link" id="admin-text" asp-controller="admin" asp-action="Index">DASHBOARD</a>
+            </div>
         <nav id="admin-menu" class="admin-menu-links">
-            <a class="admin-link" asp-controller="admin" asp-action="Index">Dashboard</a>
             <a class="admin-link" asp-controller="home" asp-action="Index">bmerketo</a>
-            <a class="admin-link" asp-controller="admin" asp-action="register">Register Production</a>
+            <a class="admin-link" asp-controller="admin" asp-action="register">Product Registration</a>
+            <div class="dropdown">
+                <a class="admin-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Users
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li><a class="admin-link dropdown-link" asp-controller="admin" asp-action="users">User List</a></li>
+                    <li><a class="admin-link dropdown-link" asp-controller="admin" asp-action="createuser">Create User</a></li>
+                </ul>
+            </div>
         </nav>
         <div class="admin-toggle">
             <button class="btn-toggle btn-outline-white" data-option="toggle" data-target="#admin-menu">

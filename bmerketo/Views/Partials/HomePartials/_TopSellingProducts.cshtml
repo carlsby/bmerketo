@@ -12,7 +12,7 @@
                 if (product.IsPopular == true)
                 {
                     <div class="grid-item">
-                        <a asp-controller="products" asp-action="product" asp-route-id="@product.Id">
+                        <a asp-controller="products" asp-action="product" asp-route-name="@product.Name">
                             <img src="@product.ProductImg" alt="@product.Name">
                             <div class="product-name">@product.Name</div>
                             <span class="product-price">$@string.Format("{0:F0}", product.Price)</span>

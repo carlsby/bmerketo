@@ -11,10 +11,12 @@ namespace bmerketo.Controllers;
 public class AccountController : Controller
 {
     private readonly AuthService _auth;
+    private readonly UserService _userService;
 
-    public AccountController(AuthService auth)
+    public AccountController(AuthService auth, UserService userService)
     {
         _auth = auth;
+        _userService = userService;
     }
 
 

@@ -5,7 +5,7 @@
     <section class="product-display mt-5">
         <div class="pt-grid-container">
             <div class="pt-image-item">
-                <img class="pt-big-image" src="@Model.ProductImg" alt="">
+                <img class="pt-big-image" src="@Model.ProductImg" alt="@Model.Name">
                 <div class="pt-gig-container">
                     <div class="pt-gig-item">
                         <img src="@Model.ProductImg" alt="@Model.Name">
@@ -39,7 +39,19 @@
                         16 Reviews
                     </span>
                 </div>
-                <div class="pt-price" id="price" data-price="@Model.Price">$@string.Format("{0:F0}", Model.Price)</div>
+                @if (Model.IsOnSale == true)
+                {
+                    <div class="pt-is-price" id="price" data-price="@Model.Price">
+                        $@string.Format("{0:F0}", Model.Price)
+                    </div>
+                    <span class="pt-is-dt-price" id="discount" data-price="@Model.Price">
+                        $@string.Format("{0:F0}", Model.Price / 2)
+                    </span>
+                }
+                else
+                {
+                    <div class="pt-price" id="price" data-price="@Model.Price">$@string.Format("{0:F0}", Model.Price)</div>
+                }
                 <div class="pt-quantity">
                     <button class="pt-minus" onclick="Minusnumber()"><i class="fa-solid fa-minus"></i></button>
                     <input id="input-quantity" name="quantity" min="1" placeholder="1" onchange="UpdateNumber()" type="number">
@@ -58,4 +70,3 @@
         </div>
     </section>
 }
-

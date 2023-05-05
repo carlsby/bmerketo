@@ -1,0 +1,40 @@
+.user-con {
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+
+    .table {
+        table-layout: fixed;
+        width: 100%;
+        margin: 0;
+
+        .table-header {
+            border-bottom: 1px solid $color-admin-theme;
+            background: #292929;
+        }
+
+        tr {
+            background: #292929;
+            border-bottom: 1px solid $color-admin-theme;
+        }
+
+        .col {
+
+            .user-select {
+                background: none;
+                border: none;
+                color: white;
+                text-transform: uppercase;
+                margin-left: 20px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.user-list-con {
+    margin-bottom: 10rem;
+}

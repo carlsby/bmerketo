@@ -16,7 +16,7 @@ namespace bmerketo.Services
         }
 
 
-        public async Task<bool> CommentAsync(ContactViewModel model)
+        public async Task<bool> CreateCommentAsync(ContactViewModel model)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace bmerketo.Services
                 }
                 else
                 {
-                    ContactEntity contactEntity = new ContactEntity
+                    ContactEntity contactEntity = new()
                     {
                         FullName = model.FullName,
                         Email = model.Email,
@@ -45,7 +45,7 @@ namespace bmerketo.Services
                         Company = model.Company,
                     };
 
-                    CommentEntity commentEntity = new CommentEntity
+                    CommentEntity commentEntity = new()
                     {
                         Comment = model.Comment,
                         CommentCreated = DateTime.Now,

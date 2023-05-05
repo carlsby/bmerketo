@@ -13,7 +13,6 @@ namespace bmerketo.Services
 
         public async Task SeedRoles()
         {
-
             if (!await _roleManager.RoleExistsAsync("admin"))
             {
                 await _roleManager.CreateAsync(new IdentityRole("admin"));

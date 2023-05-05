@@ -18,7 +18,7 @@ namespace mvc_app_1.Controllers
 
         public async Task<IActionResult> Index(string category)
         {
-            ViewData["Title"] = "Products";
+            ViewData["Title"] = "Home";
 
             List<ProductModel> products;
             List<CategoryModel> categories;

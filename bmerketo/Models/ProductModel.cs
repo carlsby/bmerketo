@@ -13,5 +13,6 @@ public class ProductModel
     public bool? IsNew { get; set; }
     public bool? IsPopular { get; set; }
     public bool? IsFeatured { get; set; }
+    public bool? IsOnSale { get; set; }
     public CategoryModel Category { get; set; } = null!;
 }

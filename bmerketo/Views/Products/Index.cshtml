@@ -1,46 +1,55 @@
 ﻿@model List<ProductModel>
+@inject CategoryService categoryService;
 
 @{
     var products = await productService.GetAllAsync();
-    var categories = ViewData["Categories"] as List<CategoryModel>;
+    var categories = await categoryService.GetAllCategoriesAsync();
 }
 
 <partial name="/Views/Partials/ProductsPartials/_ProductBanner.cshtml" />
 
 
-@if (Model.Any() || products.Any())
-{
-    <section class="product-grid-collection mb-5">
-        <div class="container-fluid mb-5 pb-5">
-            <div class="category">
-                <ul>
-                    <li><a asp-controller="products" asp-action="index">All</a></li>
-                    @foreach (var category in categories!)
-                    {
-                        <li><a asp-controller="products" asp-action="index" asp-route-category="@category.CategoryTitle">@category.CategoryTitle</a></li>
-                    }
-                </ul>
-            </div>
-
-                @if (Model.Any())
+<section class="product-grid-collection mb-5">
+    <div class="container-fluid mb-5 pb-5">
+        <div class="category">
+            <ul>
+                <li><a asp-controller="products" asp-action="index">All</a></li>
+                @foreach (var category in categories!)
                 {
-                <div class="product-grid-container">
-                    @foreach (var product in Model)
-                    {
-                        <div class="product-grid-item">
-                                        <a asp-controller="products" asp-action="product" asp-route-id="@product.Id">
-                                <img src="@product.ProductImg" alt="@product.Name">
-                                <div class="product-name">@product.Name</div>
-                                <span class="product-price">$@string.Format("{0:F0}", product.Price)</span>
-                            </a>
-                        </div>
-                    }
-                </div>
+                    <li><a asp-controller="products" asp-action="index" asp-route-category="@category.CategoryTitle">@category.CategoryTitle</a></li>
                 }
-                else
-                {
-                <div class="no-products mt-5"><i id="broken-heart" class="fa-solid fa-heart-crack"></i>No products found</div>
-                }
+            </ul>
         </div>
-    </section>
-}
+
+        @if (Model.Any())
+        {
+            <div class="product-grid-container">
+                @foreach (var product in Model.OrderByDescending(p => p.Id))
+                {
+                    <div class="product-grid-item">
+                        <a asp-controller="products" asp-action="product" asp-route-name="@product.Name">
+                            <img src="@product.ProductImg" alt="@product.Name">
+                            <div class="product-name">@product.Name</div>
+                            @if (product.IsOnSale == true)
+                            {
+                                <span class="product-is-price">$@string.Format("{0:F0}", product.Price)</span>
+                                <span class="product-is-dt-price">$@string.Format("{0:F0}", product.Price / 2)</span>
+                            }else
+                            {
+                                <span class="product-price">$@string.Format("{0:F0}", product.Price)</span>
+                            }
+                        </a>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="no-products mt-5">
+                <i id="broken-heart" class="fa-solid fa-heart-crack"></i>
+                No products found
+            </div>
+        }
+
+    </div>
+</section>

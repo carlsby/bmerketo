@@ -13,18 +13,21 @@
         <div class="container">
 
             <div class="content">
+
                 <div class="ingress">
                     WELCOME TO BMERKETO SHOP
                 </div>
+
                 <div class="title">
                     @randomProduct.Name
                 </div>
-                <a class="btn-theme desktop-link" asp-controller="products" asp-action="product" asp-route-id="@randomProduct.Id">SHOP NOW</a>
+
+                <a class="btn-theme desktop-link" asp-controller="products" asp-action="product" asp-route-name="@randomProduct.Name">SHOP NOW</a>
             </div>
 
             <div class="content-img">
                 <img src="@randomProduct.ProductImg" alt="">
-                <a class="btn-theme mobile-link" asp-controller="products" asp-action="product" asp-route-id="@randomProduct.Id">SHOP NOW</a>
+                <a class="btn-theme mobile-link" asp-controller="products" asp-action="product" asp-route-name="@randomProduct.Name">SHOP NOW</a>
             </div>
 
         </div>

@@ -16,6 +16,7 @@ builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<SeedService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<ContactService>();
+builder.Services.AddScoped<AdminService>();
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
 {
     x.SignIn.RequireConfirmedAccount = false;

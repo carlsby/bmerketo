@@ -11,7 +11,7 @@ public class ProductEntity
     public bool? IsNew { get; set; }
     public bool? IsPopular { get; set; }
     public bool? IsFeatured { get; set; }
-
+    public bool? IsOnSale { get; set; }
 
     [Column(TypeName = "money")]
     public decimal Price { get; set; }
@@ -19,7 +19,7 @@ public class ProductEntity
     public int CategoryId { get; set; }
     public CategoryEntity Category { get; set; } = null!;
 
-    public static implicit operator ProductModel(ProductEntity entity)
+    public static implicit operator ProductModel(ProductEntity? entity)
     {
         return new ProductModel
         {
@@ -31,6 +31,7 @@ public class ProductEntity
             IsNew = entity?.IsNew,
             IsPopular = entity?.IsPopular,
             IsFeatured = entity?.IsFeatured,
+            IsOnSale = entity?.IsOnSale,
             Category = entity!.Category
         };
     }

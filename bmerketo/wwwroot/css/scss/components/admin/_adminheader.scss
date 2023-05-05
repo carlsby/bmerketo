@@ -2,9 +2,10 @@
     width: 100%;
     height: 80px;
     z-index: 1;
-    background-color: #B7AC44;
+    background-color: #292929;
     display: flex;
     padding: 0 20px;
+    border-bottom: 1px solid $color-admin-theme;
 
 
     .container {
@@ -25,6 +26,7 @@
         }
     }
 
+
     .logo {
         grid-area: logo;
         display: flex;
@@ -33,8 +35,15 @@
         color: $color-dark-1;
 
         .admin-logo-link {
-            color: $color-dark-1;
+            color: #4CBB17;
             font-family: $font-poppins;
+        }
+
+        #admin-text {
+            margin-left: 5px;
+            font-size: 1.3rem !important;
+            font-family: $font-hallelujah;
+            font-weight: $font-weight-regular;
         }
 
         #ghost:hover {
@@ -92,7 +101,6 @@
             }
 
             @include lg {
-                color: $color-dark-1;
                 border: none;
                 padding: 0;
                 margin: 0 0 0 30px;
@@ -101,11 +109,30 @@
 
                 &:hover {
                     background-color: transparent;
-                    color: $color-white;
+                    color: $color-admin-theme;
                 }
             }
         }
     }
+
+    .dropdown-menu.show {
+        background: $color-dark-2;
+
+        @include lg {
+            border-bottom: 1px solid $color-admin-theme !important;
+            border-left: 1px solid $color-admin-theme !important;
+            border-right: 1px solid $color-admin-theme !important;
+            border-radius: 0 !important;
+            border-bottom-left-radius: 10px !important;
+            border-bottom-right-radius: 10px !important;
+            transform: translate(-25px, 52px) !important;
+        }
+    }
+
+    .dropdown-link {
+        margin: 0 !important;
+    }
+
 
     .admin-menu-icons {
         grid-area: menuicons;

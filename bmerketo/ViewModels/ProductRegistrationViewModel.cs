@@ -36,6 +36,9 @@ public class ProductRegistrationViewModel
     [Display(Name = "Featured Collection")]
     public bool IsFeatured { get; set; }
 
+    [Display(Name = "On Sale")]
+    public bool IsOnSale { get; set; }
+
 
 
     public static implicit operator ProductEntity(ProductRegistrationViewModel productRegistrationViewModel)
@@ -50,6 +53,7 @@ public class ProductRegistrationViewModel
             IsNew = productRegistrationViewModel.IsNew,
             IsPopular = productRegistrationViewModel.IsPopular,
             IsFeatured = productRegistrationViewModel.IsFeatured,
+            IsOnSale = productRegistrationViewModel.IsOnSale,
         };
     }
 }

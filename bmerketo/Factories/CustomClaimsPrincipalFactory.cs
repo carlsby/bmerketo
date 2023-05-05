@@ -24,7 +24,8 @@ namespace bmerketo.Factories
             claimsIdentity.AddClaims(roles.Select(x => new Claim(ClaimTypes.Role, x)));
 
             var userProfileEntity = await _userService.GetUserProfileAsync(user.Id);
-            var userAddressEntity = await _userService.GetUserProfileAsync(user.Id);
+
+            //var userAddressEntity = await _userService.GetUserProfileAsync(user.Id);
 
             claimsIdentity.AddClaim(new Claim("FullName", $"{userProfileEntity.FirstName} {userProfileEntity.LastName}"));
             claimsIdentity.AddClaim(new Claim("FirstName", $"{userProfileEntity.FirstName}"));

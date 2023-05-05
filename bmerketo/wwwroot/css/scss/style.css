@@ -1,9 +1,10 @@
 ﻿@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
 a {
   text-decoration: none;
-  color: #FA3150;
+  color: #292929;
 }
 
 button {
@@ -37,12 +38,13 @@ button:hover {
 
 .btn-admin {
   border: none;
-  background-color: #B7AC44;
+  background-color: #4CBB17;
   color: #FFFFFF;
 }
 .btn-admin:hover {
   color: #000000;
-  background-color: #FFFF00;
+  background-color: #4CBB17;
+  opacity: 0.7;
 }
 
 .footer {
@@ -151,7 +153,7 @@ header .dropdown-menu.show {
 }
 @media (min-width: 992px) {
   header .dropdown-menu.show {
-    background-color: white !important;
+    background-color: white;
     transform: translate(-40px, 50px) !important;
     border: none !important;
   }
@@ -314,6 +316,39 @@ header .toggle {
 .banner .banner-title ul li a {
   color: #636363;
   font-weight: 300;
+}
+
+#message {
+  display: block;
+  color: #000;
+  position: relative;
+  margin-top: 10px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -10px;
+  content: "✔";
+}
+
+.invalid {
+  color: red;
+  border: none !important;
+}
+
+.invalid:before {
+  position: relative;
+  left: -10px;
+  content: "✖";
 }
 
 .grid-collection {
@@ -602,6 +637,10 @@ header .toggle {
   height: 250px;
   padding: 20px;
   object-fit: scale-down;
+}
+.sales .container .grid-container .grid-item img:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
 }
 
 .showcase {
@@ -944,6 +983,21 @@ header .toggle {
   color: #000000;
   font-weight: 600;
   margin-bottom: 15px;
+}
+.product-display .pt-grid-container .pt-grid-item .pt-is-price {
+  font-size: 1.2rem;
+  color: #000000;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-decoration: line-through;
+  display: inline;
+}
+.product-display .pt-grid-container .pt-grid-item .pt-is-dt-price {
+  font-size: 1.4rem;
+  color: #000000;
+  font-weight: 600;
+  margin-bottom: 15px;
+  margin-left: 10px;
 }
 .product-display .pt-grid-container .pt-grid-item .pt-quantity {
   margin-bottom: 20px;
@@ -1309,6 +1363,25 @@ header .toggle {
   bottom: 0;
   left: 0;
 }
+.product-grid-collection .container-fluid .product-grid-container .product-grid-item .product-is-price {
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #292929;
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  text-decoration: line-through;
+}
+.product-grid-collection .container-fluid .product-grid-container .product-grid-item .product-is-dt-price {
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #292929;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 .product-grid-collection .container-fluid .product-grid-container .product-grid-item img {
   width: 100%;
   height: 150px;
@@ -1426,6 +1499,39 @@ header .toggle {
   font-size: 1.1rem;
 }
 
+.user-con {
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+}
+.user-con .table {
+  table-layout: fixed;
+  width: 100%;
+  margin: 0;
+}
+.user-con .table .table-header {
+  border-bottom: 1px solid #4CBB17;
+  background: #292929;
+}
+.user-con .table tr {
+  background: #292929;
+  border-bottom: 1px solid #4CBB17;
+}
+.user-con .table .col .user-select {
+  background: none;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  margin-left: 20px;
+}
+.user-con .table .col .user-select:hover {
+  cursor: pointer;
+}
+
+.user-list-con {
+  margin-bottom: 10rem;
+}
+
 .register .validation-summary-errors {
   display: flex;
   justify-content: center;
@@ -1440,44 +1546,45 @@ header .toggle {
   resize: none;
 }
 .register .form-label {
-  color: #B7AC44 !important;
+  color: #FFFFFF !important;
   font-size: 1.3rem;
 }
 .register select {
-  color: #B7AC44 !important;
+  color: #FFFFFF !important;
   font-size: 1rem !important;
-  border: 1px solid #B7AC44 !important;
+  border: 1px solid #4CBB17 !important;
 }
 .register .form-control {
-  border: 1px solid #B7AC44 !important;
-  color: #B7AC44 !important;
+  border: 1px solid #4CBB17 !important;
+  color: #FFFFFF !important;
 }
 .register .form-control input:focus {
   background-color: none !important;
 }
 .register .form-check .form-check-input[type=checkbox] {
-  border: 1px solid #B7AC44;
+  border: 1px solid #4CBB17;
   border-radius: 25px;
 }
 .register .form-check .form-check-input {
   background-color: rgb(33, 37, 41);
 }
 .register .form-check .form-check-input:checked {
-  background-color: #B7AC44 !important;
+  background-color: #4CBB17 !important;
 }
 .register .form-check .checkbox-label {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #B7AC44;
+  color: #FFFFFF;
 }
 
 .admin-header {
   width: 100%;
   height: 80px;
   z-index: 1;
-  background-color: #B7AC44;
+  background-color: #292929;
   display: flex;
   padding: 0 20px;
+  border-bottom: 1px solid #4CBB17;
 }
 .admin-header .container {
   display: flex;
@@ -1506,8 +1613,14 @@ header .toggle {
   color: #000000;
 }
 .admin-header .logo .admin-logo-link {
-  color: #000000;
+  color: #4CBB17;
   font-family: "Poppins", sans-serif;
+}
+.admin-header .logo #admin-text {
+  margin-left: 5px;
+  font-size: 1.3rem !important;
+  font-family: "Gloria Hallelujah", cursive;
+  font-weight: 400;
 }
 .admin-header .logo #ghost:hover {
   color: #FFFFFF;
@@ -1562,7 +1675,6 @@ header .toggle {
 }
 @media (min-width: 992px) {
   .admin-header .admin-menu-links .admin-link {
-    color: #000000;
     border: none;
     padding: 0;
     margin: 0 0 0 30px;
@@ -1571,8 +1683,25 @@ header .toggle {
   }
   .admin-header .admin-menu-links .admin-link:hover {
     background-color: transparent;
-    color: #FFFFFF;
+    color: #4CBB17;
   }
+}
+.admin-header .dropdown-menu.show {
+  background: #292929;
+}
+@media (min-width: 992px) {
+  .admin-header .dropdown-menu.show {
+    border-bottom: 1px solid #4CBB17 !important;
+    border-left: 1px solid #4CBB17 !important;
+    border-right: 1px solid #4CBB17 !important;
+    border-radius: 0 !important;
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    transform: translate(-25px, 52px) !important;
+  }
+}
+.admin-header .dropdown-link {
+  margin: 0 !important;
 }
 .admin-header .admin-menu-icons {
   grid-area: menuicons;

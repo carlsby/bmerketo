@@ -1,52 +1,54 @@
-﻿@*
-@inject SalesService salesService;
+﻿@model List<ProductModel>
+
 @{
-    var sales = salesService.GetLatest();
+    var products = await productService.GetAllAsync();
+    int counter = 0;
+    int order = 0;
 }
 
-<section class="sales">
-    <div class="container">
-        <div class="grid-container">
-           @foreach (var sale in Model.SalesItems)
-           {
-                @if (sale.Id == "1")
+@if (Model.Any() || products.Any())
+{
+    <section class="sales">
+        <div class="container">
+            <div class="grid-container">
+                @foreach (var product in products)
                 {
-                    <div class="grid-item" id="@sale.ProductName" style="order:0;">
-                        <img src="@sale.ImageUrl" alt="">
-                        <div class="product-name">
-                            @sale.ProductName
-                        </div>
-                        <div class="product-discount-price">
-                            $@sale.DiscountPrice
-                        </div>
-                        <span class="product-price">$@sale.Price</span>
-                        <i id="cart" class="fa-solid fa-cart-plus"></i>
-                    </div>
-                }else
-                {
-                    <div class="grid-item" id="@sale.ProductName" style="order:1;">
-                        <img src="@sale.ImageUrl" alt="">
-                        <div class="product-name">
-                            @sale.ProductName
-                        </div>
-                        <div class="product-discount-price">
-                            $@sale.DiscountPrice
-                        </div>
-                        <span class="product-price">$@sale.Price</span>
-                        <i id="cart" class="fa-solid fa-cart-plus"></i>
-                    </div>
+                    if (product.IsOnSale == true)
+                    {
+                        @if (counter < 2)
+                        {
+                            <div class="grid-item" style="order:@order">
+                                <a asp-controller="products" asp-action="product" asp-route-name="@product.Name">
+                                <img src="@product.ProductImg" alt="">
+                                <div class="product-name">
+                                    @product.Name
+                                </div>
+                                <div class="product-discount-price">
+                                    $@string.Format("{0:F0}", product.Price)
+                                </div>
+                                <span class="product-price">$@string.Format("{0:F0}", product.Price / 2)</span>
+                                <i id="cart" class="fa-solid fa-cart-plus"></i>
+                                </a>
+                            </div>
+                            counter++;
+                            order++;
+                        }
+                    }
                 }
-           }
 
-           @if(sales != null){
-            <div class="grid-item">
-                <div class="sell-header">@sales.SellHeader</div>
-                <div class="discount">@sales.Discount</div>
-                <div class="sell-footer">@sales.SellFooter</div>
-                <div class="offer-text">@sales.OfferText</div>
-                <button class="btn-white btn-discover-more">@sales.ButtonText</button>
+                <div class="grid-item">
+                    <div class="sell-header">
+                        UP TO SELL
+                    </div>
+                    <div class="discount">
+                        50% OFF
+                    </div>
+                    <div class="sell-footer">
+                        Get The Best Price
+                    </div>
+                    <div class="offer-text"></div>
+                </div>
             </div>
-            }
         </div>
-    </div>
-</section>*@
+    </section>
+}

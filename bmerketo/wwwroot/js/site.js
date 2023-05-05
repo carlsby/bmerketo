@@ -21,9 +21,11 @@
 let number = 1;
 
 function Plusnumber() {
-    number++;
-    document.getElementById('input-quantity').value = number;
-    UpdateNumber();
+    if (number < 20) {
+        number++;
+        document.getElementById('input-quantity').value = number;
+        UpdateNumber();
+    }
 }
 
 function Minusnumber() {
@@ -35,21 +37,17 @@ function Minusnumber() {
 }
 
 function UpdateNumber() {
-    number = parseInt(document.getElementById('input-quantity').value);
-    var price = number * parseFloat(document.getElementById('price').getAttribute('data-price'));
-    document.getElementById('price').innerHTML = '$' + price.toFixed(0);
-}
+    if (number < 21) {
+        number = parseInt(document.getElementById('input-quantity').value);
 
-function footerPosition(element, scrollHeight, innerHeight) {
-    try {
-        const _element = document.querySelector(element);
-        const isTallerThanScreen = scrollHeight >= (innerHeight + _element.scrollHeight);
+        var price = number * parseFloat(document.getElementById('price').getAttribute('data-price'));
+        document.getElementById('price').innerHTML = '$' + price.toFixed(0);
 
-        _element.classList.toggle('position-fixed-bottom', !isTallerThanScreen);
-        _element.classList.toggle('position-static', isTallerThanScreen);
-    } catch { }
+        var discount = (number / 2) * parseFloat(document.getElementById('discount').getAttribute('data-price'));
+        document.getElementById('discount').innerHTML = '$' + discount.toFixed(0);
+    }
+
 }
-footerPosition('footer', document.body.scrollHeight, window.innerHeight);
 
 function displayImage(url) {
     document.getElementById("image-preview").innerHTML = "";
@@ -61,4 +59,54 @@ function displayImage(url) {
     img.style.margin = "20px";
 
     document.getElementById("image-preview").appendChild(img);
+}
+
+function validationScript() {
+    var myInput = document.getElementById("psw");
+    var letter = document.getElementById("letter");
+    var capital = document.getElementById("capital");
+    var number = document.getElementById("number");
+    var length = document.getElementById("length");
+
+
+
+    myInput.onkeyup = function () {
+
+        var lowerCaseLetters = /[a-z]/g;
+
+        if (myInput.value.match(lowerCaseLetters)) {
+            letter.classList.remove("invalid");
+            letter.classList.add("valid");
+        } else {
+            letter.classList.remove("valid");
+            letter.classList.add("invalid");
+        }
+
+        var upperCaseLetters = /[A-Z]/g;
+
+        if (myInput.value.match(upperCaseLetters)) {
+            capital.classList.remove("invalid");
+            capital.classList.add("valid");
+        } else {
+            capital.classList.remove("valid");
+            capital.classList.add("invalid");
+        }
+
+        var numbers = /[0-9]/g;
+        if (myInput.value.match(numbers)) {
+            number.classList.remove("invalid");
+            number.classList.add("valid");
+        } else {
+            number.classList.remove("valid");
+            number.classList.add("invalid");
+        }
+
+        if (myInput.value.length >= 8) {
+            length.classList.remove("invalid");
+            length.classList.add("valid");
+        } else {
+            length.classList.remove("valid");
+            length.classList.add("invalid");
+        }
+    }
 }

@@ -25,7 +25,7 @@ namespace mvc_app_1.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (await _contact.CommentAsync(model))
+                if (await _contact.CreateCommentAsync(model))
                 {
                     return RedirectToAction("Index");
                 }

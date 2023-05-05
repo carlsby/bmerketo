@@ -1,0 +1,26 @@
+﻿@model List<UserViewModel>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "User List";
+    var role = await userService.GetAllRolesAsync();
+}
+<div class="user-list-con mt-5">
+    <div class="user-con">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="table-header text-white" scope="col">Role</th>
+                    <th class="table-header text-white" scope="col">First Name</th>
+                    <th class="table-header text-white" scope="col">Last Name</th>
+                    <th class="table-header text-white" scope="col">Email</th>
+                    <th class="table-header text-white" scope="col">Edit</th>
+                </tr>
+            </thead>
+            @foreach (var user in Model)
+            {
+                <partial name="/Views/Partials/AdminPartials/_UserPartial.cshtml" model="@user" />
+            }
+        </table>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 ﻿.register {
+    
     .validation-summary-errors {
         display: flex;
         justify-content: center;
@@ -16,19 +17,19 @@
     }
 
     .form-label {
-        color: #B7AC44 !important;
+        color: $color-white !important;
         font-size: 1.3rem;
     }
 
     select {
-        color: #B7AC44 !important;
+        color: $color-white !important;
         font-size: 1rem !important;
-        border: 1px solid #B7AC44 !important;
+        border: 1px solid $color-admin-theme !important;
     }
 
     .form-control {
-        border: 1px solid #B7AC44 !important;
-        color: #B7AC44 !important;
+        border: 1px solid $color-admin-theme !important;
+        color: $color-white !important;
 
         input:focus {
             background-color: none !important;
@@ -38,7 +39,7 @@
     .form-check {
 
         .form-check-input[type=checkbox] {
-            border: 1px solid #B7AC44;
+            border: 1px solid $color-admin-theme;
             border-radius: 25px;
         }
 
@@ -47,13 +48,13 @@
         }
 
         .form-check-input:checked {
-            background-color: #B7AC44 !important;
+            background-color: $color-admin-theme !important;
         }
 
         .checkbox-label {
             font-size: 0.9rem;
             font-weight: $font-weight-medium;
-            color: #B7AC44;
+            color: $color-white;
         }
     }
 }

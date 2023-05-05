@@ -32,8 +32,10 @@
         </div>
 
         <div class="mb-3">
-            <label asp-for="Password" class="form-label">Password</label>
-            <input asp-for="Password" class="form-control" autocomplete="off" />
+            <label asp-for="Password" class="form-label"> Password </label>
+
+            <input asp-for="Password" class="form-control" autocomplete="off" id="psw" /> 
+
             <small class="text-danger"><span asp-validation-for="Password"></span></small>
         </div>
 
@@ -41,6 +43,13 @@
             <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
             <input asp-for="ConfirmPassword" class="form-control" autocomplete="off" />
             <small class="text-danger"><span asp-validation-for="ConfirmPassword"></span></small>
+        </div>
+
+        <div id="message mb-3">
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
         </div>
 
         <div class="mb-3">
@@ -69,3 +78,7 @@
 
     </form>
 </div>
+
+<script>
+    validationScript()
+</script>

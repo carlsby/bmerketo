@@ -59,7 +59,7 @@ header {
         border-radius: 5px !important;
 
         @include lg {
-            background-color: white !important;
+            background-color: white;
             transform: translate(-40px, 50px) !important;
             border: none !important;
         }

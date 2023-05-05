@@ -100,6 +100,23 @@
                 margin-bottom: 15px;
             }
 
+            .pt-is-price {
+                font-size: 1.2rem;
+                color: $color-dark-1;
+                font-weight: $font-weight-semi-bold;
+                margin-bottom: 15px;
+                text-decoration: line-through;
+                display: inline;
+            }
+
+            .pt-is-dt-price {
+                font-size: 1.4rem;
+                color: $color-dark-1;
+                font-weight: $font-weight-semi-bold;
+                margin-bottom: 15px;
+                margin-left: 10px;
+            }
+
 
             .pt-quantity {
                 margin-bottom: 20px;

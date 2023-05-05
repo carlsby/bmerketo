@@ -22,12 +22,16 @@ namespace bmkerketo.Controllers
             ViewData["Title"] = "Products";
 
             List<ProductModel> products;
-            List<CategoryModel> categories;
 
-            products = (List<ProductModel>)await _productService.GetSearchToList(category);
-            categories = (List<CategoryModel>)await _categoryService.GetAllCategoriesAsync();
+            if (string.IsNullOrEmpty(category))
+            {
+                products = (List<ProductModel>)await _productService.GetAllAsync();
+            }
+            else
+            {
+                products = (List<ProductModel>)await _productService.GetSearchToList(category);
+            }
 
-            ViewData["Categories"] = categories;
 
 
             return View(products);
@@ -39,10 +43,11 @@ namespace bmkerketo.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Product(int id)
+        public async Task<IActionResult> Product(string name)
         {
-            ViewData["Title"] = "Product " + id;
-            ProductModel model = await _productService.GetSpecificProductAsync(id);
+            ViewData["Title"] = name;
+
+            ProductModel model = await _productService.GetSpecificProductAsync(name);
 
             return View(model);
         }
