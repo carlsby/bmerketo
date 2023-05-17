@@ -29,9 +29,8 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            width: 80%;
+            width: 90%;
             gap: 10px;
-            justify-items: center;
 
             @include lg {
                 grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -57,7 +56,7 @@
                     object-fit: contain;
 
                     @include lg {
-                        height: 200px;
+                        height: 250px;
                     }
                 }
 
@@ -65,7 +64,7 @@
                     font-weight: $font-weight-medium;
                     color: $color-dark-1;
                     font-size: 0.8rem;
-                    margin-bottom: 20px;
+                    margin-bottom: 25px;
 
                     @include lg {
                         margin-bottom: 25px;
@@ -74,10 +73,13 @@
                 }
 
                 .product-discount-price {
-                    display: inline-block;
                     text-decoration: line-through;
-                    margin-right: 20px;
                     font-size: 15px;
+                    text-align: center;
+                    position: absolute;
+                    left: 50%;
+                    bottom: 7px;
+                    transform: translateY(-50%) translateX(-50%);
                 }
 
                 .product-price {
@@ -131,6 +133,8 @@
 
                 .product-description {
                     font-size: 0.8rem;
+                    height: 5rem;
+                    overflow-y: scroll;
                 }
 
                 .post {
@@ -147,6 +151,8 @@
 
                 img {
                     width: 100%;
+                    object-fit:contain;
+                    height: 250px;
                 }
             }
         }

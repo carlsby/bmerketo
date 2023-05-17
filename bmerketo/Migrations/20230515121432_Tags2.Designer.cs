@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using bmerketo.Contexts;
 
@@ -11,9 +12,11 @@ using bmerketo.Contexts;
 namespace bmerketo.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230515121432_Tags2")]
+    partial class Tags2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,15 +131,26 @@ namespace bmerketo.Migrations
 
             modelBuilder.Entity("bmerketo.Models.Entities.ProductTagEntity", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ProductEntityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TagEntityId")
                         .HasColumnType("int");
 
                     b.Property<int>("TagId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProductId", "TagId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("TagId");
+                    b.HasIndex("ProductEntityId");
+
+                    b.HasIndex("TagEntityId");
 
                     b.ToTable("ProductTags");
                 });
@@ -182,31 +196,31 @@ namespace bmerketo.Migrations
 
             modelBuilder.Entity("bmerketo.Models.Entities.ProductTagEntity", b =>
                 {
-                    b.HasOne("bmerketo.Models.Entities.ProductEntity", "Product")
-                        .WithMany("ProductTags")
-                        .HasForeignKey("ProductId")
+                    b.HasOne("bmerketo.Models.Entities.ProductEntity", "ProductEntity")
+                        .WithMany("Tags")
+                        .HasForeignKey("ProductEntityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("bmerketo.Models.Entities.TagEntity", "Tag")
-                        .WithMany("ProductTags")
-                        .HasForeignKey("TagId")
+                    b.HasOne("bmerketo.Models.Entities.TagEntity", "TagEntity")
+                        .WithMany("Products")
+                        .HasForeignKey("TagEntityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Product");
+                    b.Navigation("ProductEntity");
 
-                    b.Navigation("Tag");
+                    b.Navigation("TagEntity");
                 });
 
             modelBuilder.Entity("bmerketo.Models.Entities.ProductEntity", b =>
                 {
-                    b.Navigation("ProductTags");
+                    b.Navigation("Tags");
                 });
 
             modelBuilder.Entity("bmerketo.Models.Entities.TagEntity", b =>
                 {
-                    b.Navigation("ProductTags");
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

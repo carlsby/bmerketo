@@ -1,38 +1,38 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace bmerketo.Models.Entities;
-
-public class ProductEntity
+namespace bmerketo.Models.Entities
 {
-    public int Id { get; set; }
-    public string Name { get; set; } = null!;
-    public string ProductImg { get; set; } = null!;
-    public string? Description { get; set; }
-    public bool? IsNew { get; set; }
-    public bool? IsPopular { get; set; }
-    public bool? IsFeatured { get; set; }
-    public bool? IsOnSale { get; set; }
-
-    [Column(TypeName = "money")]
-    public decimal Price { get; set; }
-
-    public int CategoryId { get; set; }
-    public CategoryEntity Category { get; set; } = null!;
-
-    public static implicit operator ProductModel(ProductEntity? entity)
+    public class ProductEntity
     {
-        return new ProductModel
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public string? ProductImg { get; set; }
+        public string? Description { get; set; }
+
+        [Column(TypeName = "money")]
+        public decimal Price { get; set; }
+
+        [Column(TypeName = "money")]
+        public decimal? DiscountPrice { get; set; }
+
+        public int CategoryId { get; set; }
+        public CategoryEntity? Category { get; set; }
+
+        public ICollection<ProductTagEntity> ProductTags { get; set; } = new HashSet<ProductTagEntity>();
+
+        public static implicit operator ProductModel(ProductEntity? entity)
         {
-            Id = entity?.Id,
-            Name = entity?.Name,
-            ProductImg = entity?.ProductImg,
-            Price = entity?.Price,
-            Description = entity?.Description,
-            IsNew = entity?.IsNew,
-            IsPopular = entity?.IsPopular,
-            IsFeatured = entity?.IsFeatured,
-            IsOnSale = entity?.IsOnSale,
-            Category = entity!.Category
-        };
+            return new ProductModel
+            {
+                Id = entity?.Id,
+                Name = entity?.Name,
+                ProductImg = entity?.ProductImg,
+                Price = entity?.Price,
+                DiscountPrice = entity?.DiscountPrice,
+                Description = entity?.Description,
+                Category = entity?.Category!,
+            };
+        }
     }
 }

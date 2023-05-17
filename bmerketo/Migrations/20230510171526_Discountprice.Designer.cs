@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using bmerketo.Contexts;
 
@@ -11,9 +12,11 @@ using bmerketo.Contexts;
 namespace bmerketo.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230510171526_Discountprice")]
+    partial class Discountprice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,6 +111,18 @@ namespace bmerketo.Migrations
                     b.Property<decimal?>("DiscountPrice")
                         .HasColumnType("money");
 
+                    b.Property<bool?>("IsFeatured")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsNew")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsOnSale")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsPopular")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -124,38 +139,6 @@ namespace bmerketo.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("bmerketo.Models.Entities.ProductTagEntity", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TagId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductId", "TagId");
-
-                    b.HasIndex("TagId");
-
-                    b.ToTable("ProductTags");
-                });
-
-            modelBuilder.Entity("bmerketo.Models.Entities.TagEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("TagTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("bmerketo.Models.Entities.CommentEntity", b =>
@@ -178,35 +161,6 @@ namespace bmerketo.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("bmerketo.Models.Entities.ProductTagEntity", b =>
-                {
-                    b.HasOne("bmerketo.Models.Entities.ProductEntity", "Product")
-                        .WithMany("ProductTags")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("bmerketo.Models.Entities.TagEntity", "Tag")
-                        .WithMany("ProductTags")
-                        .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Tag");
-                });
-
-            modelBuilder.Entity("bmerketo.Models.Entities.ProductEntity", b =>
-                {
-                    b.Navigation("ProductTags");
-                });
-
-            modelBuilder.Entity("bmerketo.Models.Entities.TagEntity", b =>
-                {
-                    b.Navigation("ProductTags");
                 });
 #pragma warning restore 612, 618
         }

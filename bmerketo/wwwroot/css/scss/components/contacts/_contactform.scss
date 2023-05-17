@@ -50,6 +50,11 @@
 
         .input-title {
             margin-bottom: 5px;
+            font-size: 0.8rem;
+
+            @include lg {
+                font-size: 1rem;
+            }
         }
 
         .checkbox-item {

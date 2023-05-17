@@ -1,19 +1,19 @@
 ﻿@model List<ProductModel>
 
 @{
-    var products = await productService.GetAllAsync();
+    var tags = await productService.GetTagAsync("OnSale");
     int counter = 0;
     int order = 0;
 }
 
-@if (Model.Any() || products.Any())
+@if (Model.Any() || tags.Any())
 {
     <section class="sales">
         <div class="container">
             <div class="grid-container">
-                @foreach (var product in products)
+                @foreach (var product in tags)
                 {
-                    if (product.IsOnSale == true)
+                    if (product.DiscountPrice > 0)
                     {
                         @if (counter < 2)
                         {
@@ -26,7 +26,9 @@
                                 <div class="product-discount-price">
                                     $@string.Format("{0:F0}", product.Price)
                                 </div>
-                                <span class="product-price">$@string.Format("{0:F0}", product.Price / 2)</span>
+                                <span class="product-price">
+                                    $@string.Format("{0:F0}", product.DiscountPrice)
+                                </span>
                                 <i id="cart" class="fa-solid fa-cart-plus"></i>
                                 </a>
                             </div>

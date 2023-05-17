@@ -14,56 +14,58 @@
 
             <div class="mb-3">
                 <label asp-for="Name" class="form-label"></label>
-                <input asp-for="Name" class="form-control bg-dark" />
+                <input asp-for="Name" class="form-control" />
                 <small><span asp-validation-for="Name" class="text-danger"></span></small>
             </div>
 
             <div class="mb-3">
                 <label asp-for="Price" class="form-label"></label>
-                <input asp-for="Price" class="form-control bg-dark" />
+                <input asp-for="Price" class="form-control" />
                 <small><span asp-validation-for="Price" class="text-danger"></span></small>
             </div>
 
             <div class="mb-3">
                 <label asp-for="ImageUrl" class="form-label"></label>
-                <input asp-for="ImageUrl" class="form-control bg-dark" onchange="displayImage(this.value)" />
+                <input asp-for="ImageUrl" class="form-control" onchange="displayImage(this.value)" />
                 <div id="image-preview"></div>
                 <small><span asp-validation-for="ImageUrl" class="text-danger"></span></small>
             </div>
 
             <div class="mb-3">
-                <label asp-for="CategoryId" class="form-label bg-dark"></label>
-                <select asp-for="CategoryId" class="form-select bg-dark">
-                    <option value="">Select a category</option>
-                    <option value="1">Bags</option>
-                    <option value="2">Dress</option>
-                    <option value="3">Decoration</option>
-                    <option value="4">Essentials</option>
-                    <option value="5">Interior</option>
-                    <option value="6">Laptop</option>
-                    <option value="7">Mobile</option>
-                    <option value="8">Beauty</option>
+                <label asp-for="CategoryId" class="form-label text-dark"></label>
+                <select asp-for="CategoryId" class="form-select  text-dark">
+                    <option class="text-dark" value="">Select a category</option>
+                    <option class="text-dark" value="1">Bags</option>
+                    <option class="text-dark" value="2">Dress</option>
+                    <option class="text-dark" value="3">Decoration</option>
+                    <option class="text-dark" value="4">Essentials</option>
+                    <option class="text-dark" value="5">Interior</option>
+                    <option class="text-dark" value="6">Laptop</option>
+                    <option class="text-dark" value="7">Mobile</option>
+                    <option class="text-dark" value="8">Beauty</option>
                 </select>
                 <small><span asp-validation-for="CategoryId" class="text-danger"></span></small>
             </div>
 
-            <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" asp-for="IsNew">
-                <label class="checkbox-label" asp-for="IsNew"></label><br>
-
-                <input class="form-check-input" type="checkbox" asp-for="IsFeatured">
-                <label class="checkbox-label" asp-for="IsFeatured"></label><br>
-
-                <input class="form-check-input" type="checkbox" asp-for="IsPopular">
-                <label class="checkbox-label" asp-for="IsPopular"></label><br>
-
-                <input class="form-check-input" type="checkbox" asp-for="IsOnSale">
-                <label class="checkbox-label" asp-for="IsOnSale"></label><br>
+            <div class="mb-3">
+                @foreach(SelectListItem tag in ViewBag.Tags)
+                {
+                    <div>
+                        <input id="tag-@tag.Text-@tag.Value" name="Tags" type="checkbox" value="@tag.Value" checked="@tag.Selected" class="form-check-input"/>
+                        <label for="tag-@tag.Text-@tag.Value" class="form-check-label">@tag.Text</label>
+                    </div>
+                }
             </div>
+
+            <div class="mb-3" id="discount-price-div" style="display:none;">
+                <label asp-for="DiscountPrice"></label>
+                <input asp-for="DiscountPrice" class="form-control">
+            </div>
+
 
             <div class="mb-3">
                 <label asp-for="Description" class="form-label"></label>
-                <textarea asp-for="Description" class="form-control bg-dark text-white" rows="4"></textarea>
+                <textarea asp-for="Description" class="form-control text-dark" rows="4"></textarea>
                 <small><span asp-validation-for="Description" class="text-danger"></span></small>
             </div>
 

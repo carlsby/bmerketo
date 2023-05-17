@@ -1,6 +1,7 @@
 ﻿using bmerketo.Contexts;
 using bmerketo.Models;
 using bmerketo.Models.Entities;
+using bmerketo.Repositories;
 using bmerketo.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,10 +10,12 @@ namespace bmerketo.Services;
 public class ProductService
 {
     private readonly DataContext _context;
+    private readonly ProductTagRepository _productTagRepo;
 
-    public ProductService(DataContext context)
+    public ProductService(DataContext context, ProductTagRepository productTagRepo)
     {
         _context = context;
+        _productTagRepo = productTagRepo;
     }
 
     public async Task<bool> CreateAsync(ProductRegistrationViewModel productRegistrationViewModel)
@@ -30,6 +33,30 @@ public class ProductService
             return false;
         }
     }
+
+    public async Task AddProductTagsAsync(ProductEntity entity, string[] tags)
+    {
+        var product = await _context.Products.FirstOrDefaultAsync(x => x.Name == entity.Name);
+
+        foreach (var tag in tags)
+        {
+            await _productTagRepo.AddAsync(new ProductTagEntity
+            {
+                ProductId = product!.Id,
+                TagId = int.Parse(tag)
+            });
+        }
+    }
+
+    public async Task<List<ProductEntity>> GetTagAsync(string tag)
+    {
+        var products = await _context.Products
+            .Where(p => p.ProductTags.Any(t => t.Tag!.TagTitle == tag))
+            .ToListAsync();
+
+        return products;
+    }
+
 
     public async Task<IEnumerable<ProductModel>> GetAllAsync()
     {
@@ -68,7 +95,7 @@ public class ProductService
         {
             foreach (var product in await _context.Products
                 .OrderByDescending(p => p.Id)
-                .Where(x => x.Category.CategoryTitle == name)
+                .Where(x => x.Category!.CategoryTitle == name)
                 .ToListAsync())
             {
                 products.Add(new ProductModel

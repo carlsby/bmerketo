@@ -29,6 +29,11 @@
 
         .rp-grid-item {
 
+            &:hover {
+                transform: scale(1.01);
+                transition: 0.2s;
+            }
+
             .rp-price-title {
                 margin-top: 20px;
                 color: $color-dark-2;

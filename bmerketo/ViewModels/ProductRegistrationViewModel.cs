@@ -1,4 +1,5 @@
-﻿using bmerketo.Models.Entities;
+﻿using bmerketo.Migrations;
+using bmerketo.Models.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -27,19 +28,11 @@ public class ProductRegistrationViewModel
     [DataType(DataType.Currency)]
     public decimal Price { get; set; }
 
-    [Display(Name = "New Collection")]
-    public bool IsNew { get; set; }
+    [Display(Name = "Discount Price")]
+    [DataType(DataType.Currency)]
+    public decimal? DiscountPrice { get; set; }
 
-    [Display(Name = "Popular Collection")]
-    public bool IsPopular { get; set; }
-
-    [Display(Name = "Featured Collection")]
-    public bool IsFeatured { get; set; }
-
-    [Display(Name = "On Sale")]
-    public bool IsOnSale { get; set; }
-
-
+    public List<TagsViewModel>? Tags { get; set; }
 
     public static implicit operator ProductEntity(ProductRegistrationViewModel productRegistrationViewModel)
     {
@@ -50,10 +43,7 @@ public class ProductRegistrationViewModel
             Description = productRegistrationViewModel.Description,
             Price = productRegistrationViewModel.Price,
             CategoryId = productRegistrationViewModel.CategoryId,
-            IsNew = productRegistrationViewModel.IsNew,
-            IsPopular = productRegistrationViewModel.IsPopular,
-            IsFeatured = productRegistrationViewModel.IsFeatured,
-            IsOnSale = productRegistrationViewModel.IsOnSale,
+            DiscountPrice = productRegistrationViewModel.DiscountPrice
         };
     }
 }

@@ -67,6 +67,7 @@
         width: 60%;
         height: 200px;
         padding: 40px;
+        object-fit: contain;
 
         @include md {
             width: 40%;

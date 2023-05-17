@@ -24,16 +24,16 @@
         @if (Model.Any())
         {
             <div class="product-grid-container">
-                @foreach (var product in Model.OrderByDescending(p => p.Id))
+                @foreach (var product in Model.OrderByDescending(p => p.Id).Take(8))
                 {
                     <div class="product-grid-item">
                         <a asp-controller="products" asp-action="product" asp-route-name="@product.Name">
                             <img src="@product.ProductImg" alt="@product.Name">
                             <div class="product-name">@product.Name</div>
-                            @if (product.IsOnSale == true)
+                            @if (product.DiscountPrice > 0)
                             {
                                 <span class="product-is-price">$@string.Format("{0:F0}", product.Price)</span>
-                                <span class="product-is-dt-price">$@string.Format("{0:F0}", product.Price / 2)</span>
+                                <span class="product-is-dt-price">$@string.Format("{0:F0}", product.DiscountPrice)</span>
                             }else
                             {
                                 <span class="product-price">$@string.Format("{0:F0}", product.Price)</span>

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using bmerketo.Models.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace bmerketo.Models;
@@ -10,9 +11,6 @@ public class ProductModel
     public string? ProductImg { get; set; }
     public string? Description { get; set; }
     public decimal? Price { get; set; }
-    public bool? IsNew { get; set; }
-    public bool? IsPopular { get; set; }
-    public bool? IsFeatured { get; set; }
-    public bool? IsOnSale { get; set; }
+    public decimal? DiscountPrice { get; set; }
     public CategoryModel Category { get; set; } = null!;
 }

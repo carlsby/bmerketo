@@ -1,5 +1,7 @@
 ﻿@model ProductModel
-
+@{
+    var tags = await productService.GetTagAsync("OnSale");
+}
 @if (Model != null)
 {
     <section class="product-display mt-5">
@@ -39,13 +41,13 @@
                         16 Reviews
                     </span>
                 </div>
-                @if (Model.IsOnSale == true)
+                @if (Model.DiscountPrice > 0)
                 {
                     <div class="pt-is-price" id="price" data-price="@Model.Price">
                         $@string.Format("{0:F0}", Model.Price)
                     </div>
-                    <span class="pt-is-dt-price" id="discount" data-price="@Model.Price">
-                        $@string.Format("{0:F0}", Model.Price / 2)
+                    <span class="pt-is-dt-price" id="discount" data-price="@Model.DiscountPrice">
+                        $@string.Format("{0:F0}", Model.DiscountPrice)
                     </span>
                 }
                 else
@@ -58,12 +60,15 @@
                     <button class="pt-plus" onClick="Plusnumber()"><i class="fa-solid fa-plus"></i></button>
                     <button id="btn-add-cart">Add to cart<i id="cart-svg" class="fa-solid fa-cart-plus"></i></button>
                 </div>
-                <div class="colors">
-                    <i id="pt-red" class="fa-solid fa-circle"></i>
-                    <i id="pt-yellow" class="fa-solid fa-circle"></i>
-                    <i id="pt-lightblue" class="fa-solid fa-circle"></i>
-                    <span class="pt-sku">SKU: N/A</span>
-                </div>
+                @if (Model.Category.CategoryTitle == "Bags" || Model.Category.CategoryTitle == "Dress")
+                {
+                    <div class="colors">
+                        <i id="pt-red" class="fa-solid fa-circle"></i>
+                        <i id="pt-yellow" class="fa-solid fa-circle"></i>
+                        <i id="pt-lightblue" class="fa-solid fa-circle"></i>
+                        <span class="pt-sku">SKU: N/A</span>
+                    </div>
+                }
                 <button class="btn-white btn-wishlist">Add to wishlist</button>
                 <div class="pt-category">Category: @Model.Category?.CategoryTitle</div>
             </div>

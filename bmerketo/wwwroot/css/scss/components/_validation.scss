@@ -7,27 +7,21 @@
 
 #message p {
     padding: 10px 35px;
-    font-size: 18px;
 }
 
 .valid {
     color: green;
-}
-
-.valid:before {
-    position: relative;
-    left: -10px;
-    content: "✔";
+    display: none;
 }
 
 .invalid {
     color: red;
     border: none !important;
+    font-size: 0.7rem;
+
+    @include lg {
+        font-size: 1rem;
+    }
 }
 
-.invalid:before {
-    position: relative;
-    left: -10px;
-    content: "✖";
-}
 

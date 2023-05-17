@@ -1,4 +1,5 @@
 ﻿using bmerketo.Contexts;
+using bmerketo.Models;
 using bmerketo.Services;
 using bmerketo.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -22,9 +23,12 @@ public class AccountController : Controller
 
 
     [Authorize]
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var user = await _userService.GetCurrentUserAsync(User);
+
+        ViewData["Title"] = "Account " + user.FirstName;
+        return View(user);
     }
 
 

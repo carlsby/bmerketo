@@ -10,23 +10,28 @@
 
             <div class="grid-item">
                 <label asp-for="FullName" class="input-title">Your Name*</label>
-                <input asp-for="FullName" type="text" id="name" required>
+                <input asp-for="FullName" type="text" id="fullname" required/>
+                <div id="nameCheck" class="invalid" style="display: none;">Invalid name</div>
             </div>
             <div class="grid-item">
                 <label asp-for="Email" class="input-title">Your Email*</label>
-                <input asp-for="Email" type="text" required><br>
+                <input asp-for="Email" type="text" id="email" required>
+                <div id="emailCheck" class="invalid" style="display: none;">Invalid email address</div>
             </div>
             <div class="grid-item">
                 <label asp-for="PhoneNumber" class="input-title" for="phonenumber">Phone Number (optional)</label>
-                <input asp-for="PhoneNumber" type="text"><br>
+                <input asp-for="PhoneNumber" type="text" id="phonenumber"><br>
+                <span id="phoneCheck" class="invalid" style="display:none;">Phonenumber must contain exactly 10 <b>digits</b> & start with <b>07</b></span>
             </div>
             <div class="grid-item">
                 <label asp-for="Company" class="input-title" for="company">Company (optional)</label>
-                <input asp-for="Company" type="text"><br>
+                <input asp-for="Company" type="text" id="company"><br>
+                <span id="companyCheck"></span>
             </div>
             <div class="message-item">
                 <label asp-for="Comment" class="input-title" for="company">Message*</label><br />
-                <textarea asp-for="Comment"></textarea>
+                <textarea asp-for="Comment" id="comment"></textarea>
+                <span id="commentCheck"></span>
             </div>
             <div class="checkbox-item">
                 <input class="checkbox" type="checkbox" id="save-info" name="save-info">
@@ -36,3 +41,7 @@
         </form>
     </div>
 </section>
+
+<script>
+    contactValidation()
+</script>

@@ -31,23 +31,23 @@
         grid-area: logo;
         display: flex;
         align-items: center;
-        font-size: 38px;
+        font-size: 2rem;
         color: $color-dark-1;
 
         .admin-logo-link {
-            color: #4CBB17;
+            color: $color-admin-theme;
             font-family: $font-poppins;
-        }
 
-        #admin-text {
-            margin-left: 5px;
-            font-size: 1.3rem !important;
-            font-family: $font-hallelujah;
-            font-weight: $font-weight-regular;
-        }
+            &:hover {
+                color: $color-blue;
+            }
 
-        #ghost:hover {
-            color: $color-white;
+            .admin-text {
+                margin-left: 5px;
+                font-size: 1.3rem !important;
+                font-family: $font-hallelujah;
+                font-weight: $font-weight-regular;
+            }
         }
 
         img {

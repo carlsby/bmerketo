@@ -1,9 +1,11 @@
 ﻿using bmerketo.Contexts;
+using bmerketo.Models;
 using bmerketo.Models.Entities;
 using bmerketo.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using System.Security.Claims;
 
 namespace bmerketo.Services;
 
@@ -67,5 +69,33 @@ public class UserService
         }
 
         return roles;
+    }
+
+    public async Task<UserViewModel> GetCurrentUserAsync(ClaimsPrincipal claim)
+    {
+        try
+        {
+            UserViewModel userViewModel = new();
+
+            var user = await _userManager.FindByEmailAsync(claim.Identity!.Name!);
+
+            if (user != null)
+            {
+                var profile = await GetAsync(x => x.UserId == user.Id);
+
+                userViewModel = profile;
+                userViewModel.Email = user.UserName;
+                userViewModel.PhoneNumber = user.PhoneNumber;
+            }
+            return userViewModel;
+        }
+        catch { return null!; }
+    }
+
+    public async Task<UserProfileEntity> GetAsync(Expression<Func<UserProfileEntity, bool>> predicate)
+    {
+        var userProfile = await _identityContext.UserProfiles.FirstOrDefaultAsync(predicate);
+
+        return userProfile!;
     }
 }

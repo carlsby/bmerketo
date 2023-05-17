@@ -1,13 +1,12 @@
 ﻿@model List<ProductModel>
 
 @{
-    var products = await productService.GetAllAsync();
-    var featuredProducts = products.Where(p => p.IsFeatured == true).ToList();
+    var tags = await productService.GetTagAsync("Featured");
     var random = new Random();
-    var randomProductIndex = random.Next(featuredProducts.Count());
-    var randomProduct = featuredProducts[randomProductIndex];
+    var randomProductIndex = random.Next(tags.Count());
+    var randomProduct = tags[randomProductIndex];
 }
-@if (products.Any())
+@if (tags.Any())
 {
     <section class="showcase">
         <div class="container">
@@ -26,7 +25,7 @@
             </div>
 
             <div class="content-img">
-                <img src="@randomProduct.ProductImg" alt="">
+                <img src="@randomProduct.ProductImg" alt="@randomProduct.Name">
                 <a class="btn-theme mobile-link" asp-controller="products" asp-action="product" asp-route-name="@randomProduct.Name">SHOP NOW</a>
             </div>
 

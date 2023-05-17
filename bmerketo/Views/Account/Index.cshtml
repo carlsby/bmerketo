@@ -1,88 +1,26 @@
-﻿@model UserSignUpViewModel
-@{ ViewData["Title"] = "My Account"; }
+﻿@model UserViewModel
 <section class="banner">
     <div class="banner-title">
         <ul>
             <li>
-                <h1 class="link">Welcome, @User.FindFirst("FirstName")?.Value!</h1>
+                <h2>Welcome, @Model.FirstName!</h2>
             </li>
         </ul>
     </div>
 </section>
-<div class="acc-con d-flex justify-content-center">
-
-    <div class="user-info">
-        <button type="button" id="edit-btn" class="btn btn-theme" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Edit profile
-        </button>
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit profile</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post">
-                            <div class="mb-3">
-                                <label asp-for="ProfileImg" class="form-label">Profile Picture</label>
-                                <input asp-for="ProfileImg" type="file" class="form-control" id="profile-picture" accept="image/*">
-                            </div>
-                            <div class="mb-3">
-                                <label asp-for="FirstName" class="form-label">First Name</label>
-                                <input asp-for="FirstName" class="form-control" autocomplete="off" placeholder="@User?.FindFirst("FirstName")?.Value" />
-                                <small class="text-danger"><span asp-validation-for="FirstName"></span></small>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="LastName" class="form-label">Last Name</label>
-                                <input asp-for="LastName" class="form-control" autocomplete="off" placeholder="@User?.FindFirst("LastName")?.Value" />
-                                <small class="text-danger"><span asp-validation-for="LastName"></span></small>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="Email" class="form-label">Email</label>
-                                <input asp-for="Email" class="form-control" autocomplete="off" placeholder="@User?.Identity?.Name" />
-                                <small class="text-danger"><span asp-validation-for="Email"></span></small>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
-                                <input asp-for="PhoneNumber" class="form-control" autocomplete="off" placeholder="@User?.FindFirst("PhoneNumber")?.Value" />
-                                <small class="text-danger"><span asp-validation-for="PhoneNumber"></span></small>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="StreetName" class="form-label">Street Name</label>
-                                <input asp-for="StreetName" class="form-control" autocomplete="off" placeholder="@User?.FindFirst("UserStreet")?.Value" />
-                                <small class="text-danger"><span asp-validation-for="StreetName"></span></small>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="PostalCode" class="form-label">Postal Code</label>
-                                <input asp-for="PostalCode" class="form-control" autocomplete="off" placeholder="@User?.FindFirst("UserPostalCode")?.Value" />
-                                <small class="text-danger"><span asp-validation-for="PostalCode"></span></small>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="City" class="form-label">City</label>
-                                <input asp-for="City" class="form-control" autocomplete="off" placeholder="@User?.FindFirst("UserCity")?.Value" />
-                                <small class="text-danger"><span asp-validation-for="City"></span></small>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-theme">Save changes</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="info">
-                <div class="col-12">@User?.FindFirst("FullName")?.Value</div>
-        </div>
-
-    </div>
+<div class="acc-con">
+    <ul class="p-0" style="list-style: none; text-align: center;">
+        <li>
+            <h5 class="mb-0 text-dark">Full name</h5>
+            <input class="text-center col-4 mb-1" value="@Model.FirstName @Model.LastName" disabled />
+        </li>
+        <li>
+            <h5 class="mb-0 text-dark">Phonenumber</h5>
+            <input class="text-center col-4 mb-1" value="@Model.PhoneNumber" disabled />
+        </li>
+        <li>
+            <h5 class="mb-0 text-dark">Email</h5>
+            <input class="text-center col-4 mb-1" value="@Model.Email" disabled />
+        </li>
+    </ul>
 </div>
