@@ -4,42 +4,71 @@
     var role = await userService.GetAllRolesAsync();
 }
 
-<tbody>
-    <tr>
-        <input type="hidden" asp-for="@Model.Id" />
-        <td class="col text-white" value="@Model.UserRoles">@Model.UserRoles</td>
-        <td class="col text-white">@Model.FirstName</td>
-        <td class="col text-white">@Model.LastName</td>
-        <td class="col text-white">@Model.Email</td>
-        <td class="col text-white"><i type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-@Model.Id" class="fa-solid fa-user-pen"></i></td>
 
-        <form method="post">
-            <div class="modal fade" id="exampleModal-@Model.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">@Model.FirstName @Model.LastName</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p class="mb-0 text-dark fw-bold">ID: <span class="fw-light ">@Model.Id</span></p>
-                        <p class="mb-0 text-dark fw-bold">Phone number: <span class="fw-light ">@Model.PhoneNumber</span></p>
-                        <input type="hidden" asp-for="@Model.Id" />
-                        <span class="fw-bold text-dark">Role: </span>
-                        <select class="user-select" asp-for="@Model.UserRoles">
-                            @foreach (var roles in role)
-                            {
-                                <option class="text-dark" value="@roles.Name">@roles.Name</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE</button>
-                        <button type="submit" class="btn btn-success" id="save-btn-@Model.Id">SAVE</button>
-                    </div>
+<div class="member-entry">
+    <div class="member-img">
+        @if(Model.UserRoles == "user")
+        {
+            <img src="~/images/user-images/user.png" class="img-rounded">
+        }else
+        {
+            <img src="~/images/user-images/admin.png" class="img-rounded">
+        }
+    </div>
+    <div class="member-details">
+        <h4>@Model.FirstName @Model.LastName</h4>
+        <div class="row info-list">
+            <div class="col-sm-4" id="userrole">
+                <i class="fa-solid fa-user"></i>
+                @Model.UserRoles
+            </div>
+            <div class="col-sm-4">
+                <i class="fa fa-envelope"></i>
+                <a href="mailto:name@email.com">@Model.Email</a>
+            </div>
+            <div class="clear"></div>
+            <div class="col-sm-4">
+                <i class="fa fa-location"></i>
+                @Model.Address!.City
+            </div>
+            <div class="col-sm-4">
+                <i class="fa-solid fa-phone"></i>
+                @Model.PhoneNumber
+            </div>
+            <div class="col-sm-4 text-sm-end">
+                <span id="edit" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-@Model.Id">
+                    <i class="fa-solid fa-user-pen" id="pen"></i>Edit
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form method="post">
+    <div class="modal fade" id="exampleModal-@Model.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">@Model.FirstName @Model.LastName</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="mb-0 text-dark fw-bold">ID: <span class="fw-light ">@Model.Id</span></p>
+                    <input type="hidden" asp-for="@Model.Id" />
+                    <span class="fw-bold text-dark">Role: </span>
+                    <select class="user-select" asp-for="@Model.UserRoles">
+                        @foreach (var roles in role)
+                        {
+                            <option class="text-dark" value="@roles.Name">@roles.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE</button>
+                    <button type="submit" class="btn btn-primary" id="save-btn-@Model.Id">SAVE</button>
                 </div>
             </div>
         </div>
-        </form>
-    </tr>
-</tbody>
+    </div>
+</form>
+

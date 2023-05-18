@@ -9,7 +9,7 @@
     <div class="container">
         <div class="header-title">Top selling products in this week</div>
         <div class="grid-container mb-3">
-            @foreach (var product in tags.Take(6))
+            @foreach (var product in tags.OrderByDescending(x => x.Id).Take(6))
             {
                 <div class="grid-item">
                     <a asp-controller="products" asp-action="product" asp-route-name="@product.Name">

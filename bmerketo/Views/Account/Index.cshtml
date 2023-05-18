@@ -8,19 +8,53 @@
         </ul>
     </div>
 </section>
-<div class="acc-con">
-    <ul class="p-0" style="list-style: none; text-align: center;">
-        <li>
-            <h5 class="mb-0 text-dark">Full name</h5>
-            <input class="text-center col-4 mb-1" value="@Model.FirstName @Model.LastName" disabled />
-        </li>
-        <li>
-            <h5 class="mb-0 text-dark">Phonenumber</h5>
-            <input class="text-center col-4 mb-1" value="@Model.PhoneNumber" disabled />
-        </li>
-        <li>
-            <h5 class="mb-0 text-dark">Email</h5>
-            <input class="text-center col-4 mb-1" value="@Model.Email" disabled />
-        </li>
-    </ul>
+<div class="page-content page-container d-flex justify-content-center" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-xl-12 col-md-12">
+                <div class="card user-card-full">
+                    <div class="row m-l-0 m-r-0">
+                        <div class="col-sm-4 bg-c-lite-green user-profile">
+                            <div class="card-block text-center text-white">
+                                <div class="m-b-25">
+                                    <i class="fa-solid fa-user" id="user"></i>
+                                </div>
+                                <h5 class="f-w-600 text-dark">@Model.FirstName @Model.LastName</h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="card-block">
+                                <h6 class="mb-20 p-b-5 b-b-default f-w-600 text-center" id="header">Information</h6>
+                                <div class="row">
+                                    <div class="col-sm-6 text-center">
+                                        <p class="mb-0 f-w-600">Email</p>
+                                        <h6 class="text-muted f-w-400">@Model.Email</h6>
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <p class="mb-0 f-w-600">Phone</p>
+                                        <h6 class="text-muted f-w-400">@Model.PhoneNumber</h6>
+                                    </div>
+                                </div>
+                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600 text-center" id="header">Address</h6>
+                                <div class="row">
+                                    <div class="col-sm-4 text-center">
+                                        <p class="mb-0 f-w-600">Streetname</p>
+                                        <h6 class="text-muted f-w-400">@Model.Address!.StreetName</h6>
+                                    </div>
+                                    <div class="col-sm-4 text-center">
+                                        <p class="mb-0 f-w-600">Postal Code</p>
+                                        <h6 class="text-muted f-w-400">@Model.Address!.PostalCode</h6>
+                                    </div>
+                                    <div class="col-sm-4 text-center">
+                                        <p class="mb-0 f-w-600">City</p>
+                                        <h6 class="text-muted f-w-400">@Model.Address!.City</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

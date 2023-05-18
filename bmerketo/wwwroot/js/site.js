@@ -269,10 +269,87 @@ function contactValidation() {
         const charCount = companyValue.length;
         companyCheck.innerHTML = charCount + "/100 characters";
 
-        if (companyValue.match(regComment)) {
+        if (companyValue.match(regCompany)) {
             companyCheck.style.color = "black";
         } else {
             companyCheck.style.color = "red";
+        }
+    }
+}
+
+function productValidation() {
+    const isOnSaleCheckbox = document.getElementById("tag-OnSale-4");
+    const discountPriceDiv = document.getElementById("discount-price-div");
+
+    isOnSaleCheckbox.addEventListener("change", function () {
+        if (this.checked) {
+            discountPriceDiv.style.display = "block";
+        } else {
+            discountPriceDiv.style.display = "none";
+            discountPrice.value = "";
+        }
+    });
+
+    const productName = document.getElementById("name");
+    const productPrice = document.getElementById("price");
+    const productImage = document.getElementById("image");
+    const discountPrice = document.getElementById("discountPrice");
+
+    const nameCheck = document.getElementById("nameCheck");
+    const priceCheck = document.getElementById("priceCheck");
+    const imageCheck = document.getElementById("imageCheck");
+    const discountCheck = document.getElementById("discountCheck");
+
+    const regProductName = /^(?!.*_)[\w\s"-]*$/;
+    const regProductPrice = /^\d+(\.\d{1,2})?$/;
+    const regImage = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
+    const regDiscount = /^\d+(\.\d{1,2})?$/;
+
+    productName.onkeyup = function () {
+        if (productName.value.match(regProductName)) {
+            nameCheck.style.display = "none";
+            nameCheck.classList.remove("invalid");
+            nameCheck.classList.add("valid");
+        } else {
+            nameCheck.style.display = "block";
+            nameCheck.classList.remove("valid");
+            nameCheck.classList.add("invalid");
+        }
+    }
+
+    productPrice.onkeyup = function () {
+        if (productPrice.value.match(regProductPrice)) {
+            priceCheck.style.display = "none";
+            priceCheck.classList.remove("invalid");
+            priceCheck.classList.add("valid");
+        } else {
+            priceCheck.style.display = "block";
+            priceCheck.classList.remove("valid");
+            priceCheck.classList.add("invalid");
+        }
+    }
+
+    productImage.onkeyup = function () {
+        if (productImage.value.match(regImage)) {
+            imageCheck.style.display = "none";
+            imageCheck.classList.remove("invalid");
+            imageCheck.classList.add("valid");
+        } else {
+            imageCheck.style.display = "block";
+            imageCheck.classList.remove("valid");
+            imageCheck.classList.add("invalid");
+        }
+    }
+
+    discountPrice.onkeyup = function () {
+        if (discountPrice.value.match(regDiscount)) {
+            discountCheck.style.display = "none";
+            discountCheck.classList.remove("invalid");
+            discountCheck.classList.add("valid");
+        } else {
+            discountCheck.style.display = "block";
+            discountCheck.classList.remove("valid");
+            discountCheck.classList.add("invalid");
         }
     }
 }

@@ -1,14 +1,15 @@
 ﻿@model UserSignUpViewModel
 @{
     ViewData["Title"] = "Sign up for new account";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<div class="d-flex justify-content-center mb-5">
+<div class="d-flex justify-content-center mb-5 mt-3 pb-5">
 
     <form method="post" class="col-10 col-xl-3" novalidate>
 
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+        <h3 class="mb-3 mt-3 text-center">Create a new user</h3>
         <div class="mb-3">
             <label asp-for="FirstName" class="form-label">First Name</label>
             <input asp-for="FirstName" class="form-control" autocomplete="off" id="firstname" />
@@ -92,7 +93,7 @@
 
         <div class="mt-5 mb-5">
             <div class="d-grid">
-                <button type="submit" class="btn btn-theme">SIGN UP NOW</button>
+                <button type="submit" class="btn-admin">SIGN UP NOW</button>
             </div>
         </div>
 

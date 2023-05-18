@@ -22,7 +22,7 @@ public class UserService
 
     public async Task<UserProfileEntity> GetUserProfileAsync(string userId)
     {
-        var userProfileEntity = await _identityContext.UserProfiles.Include(x => x.User).FirstOrDefaultAsync(x => x.UserId == userId);
+        var userProfileEntity = await _identityContext.UserProfiles.Include(x => x.User).Include(x => x.Address).FirstOrDefaultAsync(x => x.UserId == userId);
         return userProfileEntity!;
     }
 
@@ -46,7 +46,13 @@ public class UserService
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 ProfileImg = userProfile.ProfileImg,
-                UserRoles = roles[0]
+                UserRoles = roles[0],
+                Address = new AddressViewModel
+                {
+                    StreetName = userProfile.Address.StreetName,
+                    City = userProfile.Address.City,
+                    PostalCode = userProfile.Address.PostalCode,
+                }
             };
             userRoles.Add(profileWithRole);
         }
@@ -76,6 +82,7 @@ public class UserService
         try
         {
             UserViewModel userViewModel = new();
+            AddressViewModel addressViewModel = new();
 
             var user = await _userManager.FindByEmailAsync(claim.Identity!.Name!);
 
@@ -86,6 +93,12 @@ public class UserService
                 userViewModel = profile;
                 userViewModel.Email = user.UserName;
                 userViewModel.PhoneNumber = user.PhoneNumber;
+                userViewModel.Address = new AddressViewModel
+                {
+                    StreetName = profile.Address.StreetName,
+                    City = profile.Address.City,
+                    PostalCode = profile.Address.PostalCode,
+                };
             }
             return userViewModel;
         }
@@ -94,7 +107,7 @@ public class UserService
 
     public async Task<UserProfileEntity> GetAsync(Expression<Func<UserProfileEntity, bool>> predicate)
     {
-        var userProfile = await _identityContext.UserProfiles.FirstOrDefaultAsync(predicate);
+        var userProfile = await _identityContext.UserProfiles.Include(x => x.Address).FirstOrDefaultAsync(predicate);
 
         return userProfile!;
     }

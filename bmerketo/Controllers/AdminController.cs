@@ -47,10 +47,10 @@ namespace bmerketo.Controllers
                 await _productService.AddProductTagsAsync(productRegistrationViewModel, tags);
                 return RedirectToAction("Index", "Products");
             }
-            //else
-            //{
-            //    ModelState.AddModelError("", "Something went wrong when trying to create a product");
-            //}
+            else
+            {
+               ModelState.AddModelError("", "Something went wrong when trying to create a product");
+            }
 
             ViewBag.Tags = await _tagService.GetTagsAsync(tags);
             return View();

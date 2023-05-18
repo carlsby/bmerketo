@@ -5,22 +5,14 @@
     ViewData["Title"] = "User List";
     var role = await userService.GetAllRolesAsync();
 }
-<div class="user-list-con mt-5">
-    <div class="user-con">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th class="table-header text-white" scope="col">Role</th>
-                    <th class="table-header text-white" scope="col">First Name</th>
-                    <th class="table-header text-white" scope="col">Last Name</th>
-                    <th class="table-header text-white" scope="col">Email</th>
-                    <th class="table-header text-white" scope="col">Edit</th>
-                </tr>
-            </thead>
+<div class="container mt-2 mb-5 d-flex justify-content-center">
+    <div class="row bootstrap snippets bootdeys">
+        <div class="col-md-12 col-sm-7">
+            <h3 class="mb-3 mt-3 text-center">User list</h3>
             @foreach (var user in Model)
             {
                 <partial name="/Views/Partials/AdminPartials/_UserPartial.cshtml" model="@user" />
             }
-        </table>
+        </div>
     </div>
 </div>

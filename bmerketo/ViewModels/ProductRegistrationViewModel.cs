@@ -8,11 +8,11 @@ namespace bmerketo.ViewModels;
 
 public class ProductRegistrationViewModel
 {
-    [Required(ErrorMessage = "You have to enter a product name")]
+    [RegularExpression(@"^(?!.*_)[\w\s""-]*$", ErrorMessage = "You have to enter a product name")]
     [Display(Name = "Product name *")]
     public string Name { get; set; } = null!;
 
-    [Required(ErrorMessage = "You have to enter a image link")]
+    [RegularExpression("^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$", ErrorMessage = "You have to enter a valid image link")]
     [Display(Name = "Image URL *")]
     public string ImageUrl { get; set; } = null!;
 
@@ -23,12 +23,12 @@ public class ProductRegistrationViewModel
     [Display(Name = "Product description (Optional)")]
     public string? Description { get; set; }
 
-    [Required(ErrorMessage = "You have to enter a product price")]
+    [RegularExpression("^\\d+(\\.\\d{1,2})?$", ErrorMessage = "You have to enter a valid product price")]
     [Display(Name = "Product price *")]
     [DataType(DataType.Currency)]
     public decimal Price { get; set; }
 
-    [Display(Name = "Discount Price")]
+    [RegularExpression("^\\d+(\\.\\d{1,2})?$", ErrorMessage = "You have to enter a valid discount price")]
     [DataType(DataType.Currency)]
     public decimal? DiscountPrice { get; set; }
 

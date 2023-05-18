@@ -2,3 +2,34 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewData["Title"] = "Dashboard";
 }
+
+<div class="admin-con text-center mt-5">
+    <a class="admin-index-link" asp-controller="admin" asp-action="register">
+        <div class="admin-index mb-2">
+            <div class="center">
+                <i class="fa-solid fa-plus" id="symbol"></i><br />Add a new product
+            </div>
+        </div>
+    </a>
+        <a class="admin-index-link" asp-controller="admin" asp-action="createuser">
+        <div class="admin-index mb-2">
+            <div class="center">
+                <i class="fa-solid fa-user-plus" id="symbol"></i><br />Create a new user
+            </div>
+        </div>
+    </a>
+    <a class="admin-index-link" asp-controller="admin" asp-action="users">
+        <div class="admin-index mb-2">
+            <div class="center">
+                <i class="fa-solid fa-users" id="symbol"></i><br />See & manage all users
+            </div>
+        </div>
+    </a>
+    <a class="admin-index-link" asp-controller="home" asp-action="index">
+        <div class="admin-index mb-2">
+            <div class="center">
+                <i class="fa-solid fa-rotate-left" id="symbol"></i><br />Go back to bmerketo
+            </div>
+        </div>
+    </a>
+</div>

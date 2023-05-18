@@ -29,15 +29,3 @@ try {
     })
 
 } catch { }
-
-
-const isOnSaleCheckbox = document.getElementById("tag-OnSale-4");
-const discountPriceDiv = document.getElementById("discount-price-div");
-
-isOnSaleCheckbox.addEventListener("change", function () {
-    if (this.checked) {
-        discountPriceDiv.style.display = "block";
-    } else {
-        discountPriceDiv.style.display = "none";
-    }
-});

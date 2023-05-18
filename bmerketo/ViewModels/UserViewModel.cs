@@ -1,4 +1,5 @@
-﻿using bmerketo.Models.Entities;
+﻿using bmerketo.Migrations.Identity;
+using bmerketo.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
@@ -13,7 +14,7 @@ namespace bmerketo.ViewModels
         public string? PhoneNumber { get; set; }
         public string? ProfileImg { get; set; }
         public string? UserRoles { get; set; }
-
+        public AddressViewModel? Address { get; set; }
 
         public static implicit operator UserProfileEntity(UserViewModel model)
         {

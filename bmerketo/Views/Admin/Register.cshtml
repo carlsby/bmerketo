@@ -6,27 +6,30 @@
 
 
 <div class="register d-flex justify-content-center">
-    <div class="reg-con col-6 mb-5 mt-5 pb-5">
-
+    <div class="reg-con col-6 mb-5 mt-3 pb-5">
+        <h3 class="mb-3 text-center">Add a new product</h3>
         <form method="post" novalidate>
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="mb-3">
                 <label asp-for="Name" class="form-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" class="form-control" id="name"/>
                 <small><span asp-validation-for="Name" class="text-danger"></span></small>
+                <div id="nameCheck" class="invalid" style="display: none;">Invalid product name</div>
             </div>
 
             <div class="mb-3">
                 <label asp-for="Price" class="form-label"></label>
-                <input asp-for="Price" class="form-control" />
+                <input asp-for="Price" class="form-control" id="price" />
                 <small><span asp-validation-for="Price" class="text-danger"></span></small>
+                <div id="priceCheck" class="invalid" style="display: none;">Invalid price</div>
             </div>
 
             <div class="mb-3">
                 <label asp-for="ImageUrl" class="form-label"></label>
-                <input asp-for="ImageUrl" class="form-control" onchange="displayImage(this.value)" />
+                <input asp-for="ImageUrl" class="form-control" onchange="displayImage(this.value)" id="image"/>
+                <div id="imageCheck" class="invalid" style="display: none;">Invalid image link</div>
                 <div id="image-preview"></div>
                 <small><span asp-validation-for="ImageUrl" class="text-danger"></span></small>
             </div>
@@ -52,14 +55,15 @@
                 {
                     <div>
                         <input id="tag-@tag.Text-@tag.Value" name="Tags" type="checkbox" value="@tag.Value" checked="@tag.Selected" class="form-check-input"/>
-                        <label for="tag-@tag.Text-@tag.Value" class="form-check-label">@tag.Text</label>
+                        <label for="tag-@tag.Text-@tag.Value" class="form-check-label text-dark">@tag.Text</label>
                     </div>
                 }
             </div>
 
             <div class="mb-3" id="discount-price-div" style="display:none;">
                 <label asp-for="DiscountPrice"></label>
-                <input asp-for="DiscountPrice" class="form-control">
+                <input asp-for="DiscountPrice" class="form-control" id="discountPrice">
+                <div id="discountCheck" class="invalid" style="display: none;">Invalid discount price</div>
             </div>
 
 
@@ -75,3 +79,7 @@
         </form>
     </div>
 </div>
+
+<script>
+    productValidation();
+</script>
