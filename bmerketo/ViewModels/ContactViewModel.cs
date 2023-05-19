@@ -25,6 +25,8 @@ namespace bmerketo.ViewModels
         [RegularExpression("/^[\\s\\S]{0,100}$/")]
         public string? Company { get; set; }
 
+        [Display(Name = "Comment")]
+        [RegularExpression("/^[\\s\\S]{0,500}$/")]
         public string Comment { get; set; } = null!;
 
         public static implicit operator ContactEntity(ContactViewModel contactViewModel)
