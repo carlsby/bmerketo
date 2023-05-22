@@ -49,7 +49,7 @@
 <p align="center">Denna flik har du tillgång till ifall du är admin, mer om den nedan.</p>
 <h4 align="center"><img src="https://i.imgur.com/jxG9OgN.png" width="25px"></h4>
 <p align="center">Denna symbol ser du om du är inloggad. Detta är en dropdown, där du kan välja mellan att se din profil eller att logga ut.</p>
-<h4 align="center">Login</h4>
+<h4 align="center"><ins>Login<ins></h4>
 <p align="center">Denna ser du ifall du inte är inloggad. Här kan du logga in. (Du registrerar ett nytt konto genom att trycka på "Not registered? Click here to sign up")</p>
 <hr>
 <h2 align="center"><ins>Admin:</ins></h2>
