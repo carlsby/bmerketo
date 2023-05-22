@@ -7,11 +7,26 @@
 <hr>
 <h2 align="center"><ins>Inloggning:</ins></h2>
 <h4 align="center">Det finns två färdiga admin-profiler. Dessa är: </h4>
-<p align="center">Användarnamn: carlandersson99@outlook.com <br>
-Lösenord: Bytmig123!<br>
-Användarnamn: berand@outlook.com<br>
-Lösenord: Bertil123!</p>
-<br>
+
+<table align="center">
+    <thead>
+        <tr>
+            <th align="left">Email:</th>
+            <th align="center">Lösenord:</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left">carlandersson99@outlook.com</td>
+            <td align="center">Bytmig123!</td>
+        </tr>
+             <tr>
+            <td align="left">berand@outlook.com</td>
+            <td align="center">Bertil123!</td>
+        </tr>
+    </tbody>
+</table>
+
 <hr>
 <h2 align="center"><ins>Startsidan:</ins><br></h2><h4 align="center">(Det går att trycka på alla produkter för att komma till deras specifika produktsida)</h4>
 <h4 align="center"><ins>Showcase</ins></h4>
@@ -51,3 +66,4 @@ Trycker du här så går du till användarprofilen för den som är inloggad.</p
 <p align="center"><ins>Go back to bmerketo:</ins><br>
 Tryck här ifall du vill gå tillbaka till startsidan.</p>
 <hr>
+
