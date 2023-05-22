@@ -55,7 +55,7 @@
 <h2 align="center"><ins>Admin</ins></h2>
 <h4 align="center">Om du är inloggad som admin så har du tillgång en admin-dashboard. Där finns det fem olika val du kan göra. (Valen finns även att göra i admin headern)</h4>
 <p align="center"><ins>Add a new product:</ins><br>
-Här kan du skapa en ny produkt, du får välja produktnamn, produktpris, kategori, vilken kollektion samt beskrivning. Kryssar du i att produkten är på discount så får du även skriva in ett nytt discount price.</p>
+Här kan du skapa en ny produkt, du får välja produktnamn, produktpris, kategori, vilken kollektion samt beskrivning. Kryssar du i att produkten är "On Sale" så får du även skriva in ett nytt discount price.</p>
 <p align="center"><ins>Create a new user:</ins><br>
 Här skapar du en ny användare, likt som du gör ifall du registrerar ett nytt konto på startsidan.</p>
 <p align="center"><ins>See & manage all users:</ins><br>
