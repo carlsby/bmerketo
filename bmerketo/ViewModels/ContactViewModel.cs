@@ -6,27 +6,25 @@ namespace bmerketo.ViewModels
     public class ContactViewModel
     {
         [Required(ErrorMessage = "You have to enter your name")]
-        [RegularExpression("^[a-zA-Z0-9][a-zA-Z0-9\\s'-]{0,98}[a-zA-Z0-9]$\r\n")]
+        [RegularExpression(@"^[a-öA-Ö]+(?:[ é'-][a-öA-Ö]+)$", ErrorMessage = "You have to enter a valid name")]
         [Display(Name = "Name")]
         public string FullName { get; set; } = null!;
 
         [Required(ErrorMessage = "You have to enter a email address")]
-        [RegularExpression("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$\r\n")]
+        [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$", ErrorMessage = "You have to enter a valid email")]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email address")]
         public string Email { get; set; } = null!;
 
         [DataType(DataType.PhoneNumber)]
-        [RegularExpression("^[\\d+\\s()-]{8,20}$\r\n")]
         [Display(Name = "Phone number")]
         public string? PhoneNumber { get; set; }
 
         [Display(Name = "Company")]
-        [RegularExpression("/^[\\s\\S]{0,100}$/")]
         public string? Company { get; set; }
 
+        [Required(ErrorMessage = "You have to enter a message")]
         [Display(Name = "Comment")]
-        [RegularExpression("/^[\\s\\S]{0,500}$/")]
         public string Comment { get; set; } = null!;
 
         public static implicit operator ContactEntity(ContactViewModel contactViewModel)

@@ -56,6 +56,7 @@ function validationScript() {
     const number = document.getElementById("number");
     const length = document.getElementById("length");
     const compare = document.getElementById("compare");
+    const special = document.getElementById("special");
     const fName = document.getElementById("fnameCheck");
     const lName = document.getElementById("lnameCheck");
     const phone = document.getElementById("phoneCheck");
@@ -69,6 +70,7 @@ function validationScript() {
     const regPostal = /^(?:SE-)?\d{3}\s?\d{2}$/;
     const regCity = /^[a-zA-ZåäöÅÄÖ]{3,}$/;
     const numbers = /[0-9]/g;
+    const specCharReg = /^(?=.*[!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?]).*$/;
 
     myInput.onkeyup = function () {
 
@@ -80,6 +82,14 @@ function validationScript() {
         } else {
             letter.classList.remove("valid");
             letter.classList.add("invalid");
+        }
+
+        if (myInput.value.match(specCharReg)) {
+            special.classList.remove("invalid");
+            special.classList.add("valid");
+        } else {
+            special.classList.remove("valid");
+            special.classList.add("invalid");
         }
 
         const upperCaseLetters = /[A-Z]/g;
@@ -206,7 +216,7 @@ function contactValidation() {
     const commentCheck = document.getElementById("commentCheck");
     const companyCheck = document.getElementById("companyCheck");
 
-    const regName = /^[a-öA-Ö]+(?:[é'-][a-öA-Ö]+)*$/;
+    const regName = /^[a-öA-Ö\s]+(?:[é'-][a-öA-Ö\s]+)*$/;
     const regPhone = /^07[02369]\d{7}$/;
     const regEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const regComment = /^[\s\S]{0,500}$/;

@@ -23,7 +23,7 @@
             @if (Model.Any())
             {
                 <div class="product-grid-container">
-                    @foreach (var product in tags.OrderByDescending(p => p.Id))
+                    @foreach (var product in tags.OrderByDescending(p => p.Id).Take(8))
                     {
                         <div class="product-grid-item">
                             <a asp-controller="products" asp-action="product" asp-route-name="@product.Name">

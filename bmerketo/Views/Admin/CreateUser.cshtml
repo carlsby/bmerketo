@@ -46,24 +46,21 @@
             <span id="phoneCheck" class="invalid" style="display:none;">Phonenumber must contain exactly 10 <b>digits</b> & start with <b>07</b></span>
         </div>
 
-        <div class="mb-3">
+        <div>
             <label asp-for="Password" class="form-label"> Password </label>
             <input asp-for="Password" class="form-control" autocomplete="off" id="psw" />
             <small class="text-danger"><span asp-validation-for="Password"></span></small>
-        </div>
-        <div id="message">
             <span id="letter" class="invalid">A <b>lowercase</b> letter,</span>
             <span id="number" class="invalid">a <b>number,</b></span>
             <span id="capital" class="invalid">a <b>capital (uppercase)</b> letter,</span>
-            <span id="length" class="invalid">Minimum <b>8 characters</b></span>
+            <span id="length" class="invalid">Minimum <b>8 characters,</b></span>
+            <span id="special" class="invalid">Minimum 1 <b>special</b> character</span>
         </div>
 
         <div>
             <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
             <input asp-for="ConfirmPassword" class="form-control" autocomplete="off" id="cfm-psw" />
             <small class="text-danger"><span asp-validation-for="ConfirmPassword"></span></small>
-        </div>
-        <div id="message">
             <span id="compare" class="invalid">Passwords must <b>match</b></span>
         </div>
 
