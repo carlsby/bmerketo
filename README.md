@@ -1,4 +1,4 @@
-<h1 align="center">ASP.NET inlämning: Bmerketo |  Carl Andersson</h1>
+<h1 align="center"><ins>ASP.NET inlämning: Bmerketo |  Carl Andersson</ins></h1>
 <h2 align="center"><ins>Hur man startar:</ins></h2>
 <p>1. Börja med att gå in i mappen Contexts och dubbelklicka på filerna forms-database.mdf och identity-database.mdf. </p>
 <p>2. Gå in i server explorer och högerklicka på forms-database.mdf och kopiera connection stringen. Gå sedan in i  appsettings.json och klistra in den under "Sql". Gör sedan samma sak för identity-database.mdf och klistra in den under "IdentityDatabase".</p>
