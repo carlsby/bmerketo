@@ -32,8 +32,6 @@ namespace bmkerketo.Controllers
                 products = (List<ProductModel>)await _productService.GetSearchToList(category);
             }
 
-
-
             return View(products);
         }
 

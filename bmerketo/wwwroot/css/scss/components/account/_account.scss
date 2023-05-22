@@ -8,6 +8,23 @@
 
 .user-card-full {
     overflow: hidden;
+
+    .user-profile {
+        border-radius: 5px 0 0 5px;
+    }
+
+    .social-link {
+        li {
+            display: inline-block;
+
+            a {
+                font-size: 20px;
+                margin: 0 10px 0 0;
+                -webkit-transition: all 0.3s ease-in-out;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
 }
 
 .card {
@@ -18,19 +35,24 @@
 
     @include lg {
         width: 90vh;
+
+        .card-block {
+            p {
+                line-height: 25px;
+                line-height: 25px;
+            }
+        }
     }
 }
+
 
 .m-r-0 {
     margin-right: 0px;
 }
 
+
 .m-l-0 {
     margin-left: 0px;
-}
-
-.user-card-full .user-profile {
-    border-radius: 5px 0 0 5px;
 }
 
 .bg-c-lite-green {
@@ -43,6 +65,7 @@
 
 .card-block {
     padding: 1.25rem;
+    padding: 1.25rem;
 }
 
 .m-b-25 {
@@ -54,11 +77,12 @@
 }
 
 #user {
-    font-size: 3rem;
-    border: 3px solid black;
-    padding: 10px;
-    border-radius: 50px;
-    color: black;
+    font-size: 7rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-top: none;
+    padding: 20px;
+    border-radius: 50%;
+    color: $color-dark-2;
 }
 
 #header {
@@ -69,37 +93,23 @@ h6 {
     font-size: 14px;
 }
 
-.card .card-block p {
-    line-height: 25px;
-}
-
-@media only screen and (min-width: 1400px) {
-    p {
-        font-size: 14px;
-    }
-}
-
-.card-block {
-    padding: 1.25rem;
-}
-
 .b-b-default {
+    border-bottom: 1px solid #e0e0e0;
     border-bottom: 1px solid #e0e0e0;
 }
 
 .m-b-20 {
     margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .p-b-5 {
     padding-bottom: 5px !important;
-}
-
-.card .card-block p {
-    line-height: 25px;
+    padding-bottom: 5px !important;
 }
 
 .m-b-10 {
+    margin-bottom: 10px;
     margin-bottom: 10px;
 }
 
@@ -107,42 +117,23 @@ h6 {
     color: #919aa3 !important;
 }
 
-.b-b-default {
-    border-bottom: 1px solid #e0e0e0;
-}
-
 .f-w-600 {
     font-weight: 600;
     font-size: 0.9rem;
 }
 
-.m-b-20 {
-    margin-bottom: 20px;
-}
-
 .m-t-40 {
+    margin-top: 20px;
     margin-top: 20px;
 }
 
-.p-b-5 {
-    padding-bottom: 5px !important;
+.img-rounded {
+    width: 250px;
 }
 
-.m-b-10 {
-    margin-bottom: 10px;
-}
+p {
 
-.m-t-40 {
-    margin-top: 20px;
-}
-
-.user-card-full .social-link li {
-    display: inline-block;
-}
-
-.user-card-full .social-link li a {
-    font-size: 20px;
-    margin: 0 10px 0 0;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+    @include xxl {
+        font-size: 14px;
+    }
 }

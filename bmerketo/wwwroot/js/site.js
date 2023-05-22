@@ -74,7 +74,7 @@ function validationScript() {
 
     myInput.onkeyup = function () {
 
-        const lowerCaseLetters = /[a-z]/g;
+        const lowerCaseLetters = /(?=.*[a-zåäö])/g;
 
         if (myInput.value.match(lowerCaseLetters)) {
             letter.classList.remove("invalid");
@@ -92,7 +92,8 @@ function validationScript() {
             special.classList.add("invalid");
         }
 
-        const upperCaseLetters = /[A-Z]/g;
+        const upperCaseLetters = /(?=.*[A-ZÅÄÖ])/g;
+
 
         if (myInput.value.match(upperCaseLetters)) {
             capital.classList.remove("invalid");

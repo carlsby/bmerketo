@@ -49,7 +49,7 @@ namespace bmerketo.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Something went wrong when trying to create a product");
+               ModelState.AddModelError("", "Something went wrong when trying to create a product");
             }
 
             ViewBag.Tags = await _tagService.GetTagsAsync(tags);

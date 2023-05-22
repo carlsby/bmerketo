@@ -1,15 +1,12 @@
-﻿@model List<ProductModel>
-
-@{
+﻿@{
     var tags = await productService.GetTagAsync("New");
     var categories = ViewData["Categories"] as List<CategoryModel>;
 }
-
-@if (Model.Any() || tags.Any())
-{
-    <section class="product-grid-collection mb-3">
-        <div class="text-center">Best Collection</div>
-        <div class="container-fluid mb-3 pb-3">
+<section class="product-grid-collection mb-3">
+    <div class="text-center">Best Collection</div>
+    <div class="container-fluid mb-3 pb-3">
+        @if (categories!.Any())
+        {
             <div class="category">
                 <ul>
                     <li><a asp-controller="products" asp-action="index">All</a></li>
@@ -19,43 +16,43 @@
                     }
                 </ul>
             </div>
-
-            @if (Model.Any())
-            {
-                <div class="product-grid-container">
-                    @foreach (var product in tags.OrderByDescending(p => p.Id).Take(8))
-                    {
-                        <div class="product-grid-item">
-                            <a asp-controller="products" asp-action="product" asp-route-name="@product.Name">
-                                <img src="@product.ProductImg" alt="@product.Name">
-                                <div class="product-name">
-                                    @product.Name
-                                </div>
-                                @if (product.DiscountPrice > 0)
-                                {
-                                    <div class="product-is-price">$@string.Format("{0:F0}", product.Price)</div>
-                                    <span class="product-price">$@string.Format("{0:F0}", product.DiscountPrice)</span>
-                                }else
-                                {
-                                    <span class="product-price">$@string.Format("{0:F0}", product.Price)</span>
-                                }
-                            </a/>
-                        </div>
+        }
+        @if (tags.Any())
+        {
+            <div class="product-grid-container">
+                @foreach (var product in tags.OrderByDescending(p => p.Id).Take(8))
+                {
+                    <div class="product-grid-item">
+                        <a asp-controller="products" asp-action="product" asp-route-name="@product.Name">
+                            <img src="@product.ProductImg" alt="@product.Name">
+                            <div class="product-name">
+                                @product.Name
+                            </div>
+                            @if (product.DiscountPrice > 0)
+                            {
+                                <div class="product-is-price">$@string.Format("{0:F0}", product.Price)</div>
+                                <span class="product-price">$@string.Format("{0:F0}", product.DiscountPrice)</span>
+                            }else
+                            {
+                                <span class="product-price">$@string.Format("{0:F0}", product.Price)</span>
+                            }
+                        </a/>
+                    </div>
                         
-                    }
-                </div>
-                <div class="d-flex justify-content-center mt-5">
-                    <button>LOAD MORE<i class="fa-solid fa-rotate-right"></i></button>
-                </div>
-            }
-            else
-            {
-                <div class="no-products mt-5">
-                    <i id="broken-heart" class="fa-solid fa-heart-crack"></i>
-                    No products found
-                </div>
-            }
-        </div>
-    </section>
-}
+                }
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                <button>LOAD MORE<i class="fa-solid fa-rotate-right"></i></button>
+            </div>
+        }
+        else
+        {
+            <div class="no-products mt-5">
+                <i id="broken-heart" class="fa-solid fa-heart-crack"></i>
+                No products found
+            </div>
+        }
+    </div>
+</section>
+
 

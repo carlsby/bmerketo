@@ -1,40 +1,39 @@
-﻿@model List<ProductModel>
-
-@{
+﻿@{
     var tags = await productService.GetTagAsync("OnSale");
-    int counter = 0;
     int order = 0;
+    var random = new Random();
+    var selectedProducts = tags
+        .Where(t => t.DiscountPrice > 0)
+        .OrderByDescending(t => t.Id)
+        .OrderBy(_ => random.Next())
+        .Take(2);
 }
 
-@if (Model.Any() || tags.Any())
+@if (tags.Any())
 {
     <section class="sales">
         <div class="container">
             <div class="grid-container">
-                @foreach (var product in tags)
+                @foreach (var product in selectedProducts.OrderByDescending(t => t.Id))
                 {
-                    if (product.DiscountPrice > 0)
+                    if (product.DiscountPrice > 0 && order < 2)
                     {
-                        @if (counter < 2)
-                        {
-                            <div class="grid-item" style="order:@order">
-                                <a asp-controller="products" asp-action="product" asp-route-name="@product.Name">
-                                <img src="@product.ProductImg" alt="">
-                                <div class="product-name">
-                                    @product.Name
-                                </div>
-                                <div class="product-discount-price">
-                                    $@string.Format("{0:F0}", product.Price)
-                                </div>
-                                <span class="product-price">
-                                    $@string.Format("{0:F0}", product.DiscountPrice)
-                                </span>
-                                <i id="cart" class="fa-solid fa-cart-plus"></i>
-                                </a>
+                        <div class="grid-item" style="order:@order">
+                            <a asp-controller="products" asp-action="product" asp-route-name="@product.Name">
+                            <img src="@product.ProductImg" alt="">
+                            <div class="product-name">
+                                @product.Name
                             </div>
-                            counter++;
-                            order++;
-                        }
+                            <div class="product-discount-price">
+                                $@string.Format("{0:F0}", product.Price)
+                            </div>
+                            <span class="product-price">
+                                $@string.Format("{0:F0}", product.DiscountPrice)
+                            </span>
+                            <i id="cart" class="fa-solid fa-cart-plus"></i>
+                            </a>
+                        </div>
+                        order++;
                     }
                 }
 
