@@ -4,7 +4,7 @@
 <p>2. Gå in i server explorer och högerklicka på forms-database.mdf och kopiera connection stringen. Gå sedan in i  appsettings.json och klistra in den under "Sql". Gör sedan samma sak för identity-database.mdf och klistra in den under "IdentityDatabase".</p>
 <p>3. Starta sedan programmet.</p>
 <hr>
-<h2 align="center"><ins>Inloggning:</ins></h2>
+<h2 align="center"><ins>Inloggning</ins></h2>
 <h4 align="center">Det finns två färdiga admin-profiler. Dessa är: </h4>
 
 <table align="center">
@@ -27,7 +27,7 @@
 </table>
 
 <hr>
-<h2 align="center"><ins>Startsidan:</ins><br></h2><h4 align="center">(Det går att trycka på alla produkter för att komma till deras specifika produktsida)</h4>
+<h2 align="center"><ins>Startsidan</ins><br></h2><h4 align="center">(Det går att trycka på alla produkter för att komma till deras specifika produktsida)</h4>
 <h4 align="center"><ins>Showcase</ins></h4>
 <p>När sidan startas upp så ser du först en stor showcase där det slumpas ut olika produkter i kolletionen "Featured". Tryck på shopknappen för att se produktsidan för den specifika produkten.</p>
 <h4 align="center"><ins>Best Collection</ins></h4>
@@ -38,7 +38,7 @@
 <p>Här visas de 6 nyaste produkterna ut som är med i kollektionen "Popular". Under "Top selling products in this week" så slumpas det ut 3 stycken produkter som är med i "Popular". Här syns beskrivningen under samt en rating.</p>
 <br>
 <hr>
-<h2 align="center"><ins>Navbar:</ins></h2>
+<h2 align="center"><ins>Navbar</ins></h2>
 <h4 align="center"><ins>Home</ins></h4>
 <p align="center">Tryck här för att komma till startsidan.</p>
 <h4 align="center"><ins>Products</ins></h4>
@@ -52,7 +52,7 @@
 <h4 align="center"><ins>Login<ins></h4>
 <p align="center">Denna ser du ifall du inte är inloggad. Här kan du logga in. (Du registrerar ett nytt konto genom att trycka på "Not registered? Click here to sign up")</p>
 <hr>
-<h2 align="center"><ins>Admin:</ins></h2>
+<h2 align="center"><ins>Admin</ins></h2>
 <h4 align="center">Om du är inloggad som admin så har du tillgång en admin-dashboard. Där finns det fem olika val du kan göra. (Valen finns även att göra i admin headern)</h4>
 <p align="center"><ins>Add a new product:</ins><br>
 Här kan du skapa en ny produkt, du får välja produktnamn, produktpris, kategori, vilken kollektion samt beskrivning. Kryssar du i att produkten är på discount så får du även skriva in ett nytt discount price.</p>
