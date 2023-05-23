@@ -8,45 +8,49 @@
 <section class="topsellers">
     <div class="container">
         <div class="header-title">Top selling products in this week</div>
-        <div class="grid-container mb-3">
-            @foreach (var product in tags.OrderByDescending(x => x.Id).Take(6))
-            {
-                <div class="grid-item">
-                    <a asp-controller="products" asp-action="product" asp-route-name="@product.Name">
-                        <img src="@product.ProductImg" alt="@product.Name">
-                        <div class="product-name">@product.Name</div>
-                        @if (product.DiscountPrice > 0)
-                        {
-                            <div class="product-discount-price">$@string.Format("{0:F0}", product.Price)</div>
-                            <span class="product-price">$@string.Format("{0:F0}", product.DiscountPrice)</span>
-                        }else
-                        {
-                            <span class="product-price">$@string.Format("{0:F0}", product.Price)</span>
-                        }
-                    </a>
-                </div>
-            }
-        </div>
-        <div class="slides">
-            <button class="btn-white btn-slide"><i class="fa-solid fa-chevron-left"></i></button>
-            <button class="btn-white btn-slide"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-        <div class="grid-container-below">
-            @foreach (var product in randomProducts)
-            {
-                Random rnd = new Random();
-                int randomNumber = rnd.Next(1, 40);
-                <div class="grid-item-below">
-                    <a asp-controller="products" asp-action="product" asp-route-name="@product.Name">
-                        <img src="@product.ProductImg" alt="@product.Name">
-                    </a>
-                    <div class="product-name">@product.Name</div>
-                    <div class="product-description">
-                        @product.Description
+        @if (tags.Any())
+        {
+            <div class="grid-container mb-3">
+                @foreach (var product in tags.OrderByDescending(x => x.Id).Take(6))
+                {
+                    <div class="grid-item">
+                        <a asp-controller="products" asp-action="product" asp-route-name="@product.Name">
+                            <img src="@product.ProductImg" alt="@product.Name">
+                            <div class="product-name">@product.Name</div>
+                            @if (product.DiscountPrice > 0)
+                            {
+                                <div class="product-discount-price">$@string.Format("{0:F0}", product.Price)</div>
+                                <span class="product-price">$@string.Format("{0:F0}", product.DiscountPrice)</span>
+                            }
+                            else
+                            {
+                                <span class="product-price">$@string.Format("{0:F0}", product.Price)</span>
+                            }
+                        </a>
                     </div>
-                    <span class="post">POST BY: ADMIN</span><span class="comments">COMMENTS @randomNumber</span>
-                </div>
-            }
-        </div>
+                }
+            </div>
+            <div class="slides">
+                <button class="btn-white btn-slide"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="btn-white btn-slide"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="grid-container-below">
+                @foreach (var product in randomProducts)
+                {
+                    Random rnd = new Random();
+                    int randomNumber = rnd.Next(1, 40);
+                    <div class="grid-item-below">
+                        <a asp-controller="products" asp-action="product" asp-route-name="@product.Name">
+                            <img src="@product.ProductImg" alt="@product.Name">
+                        </a>
+                        <div class="product-name">@product.Name</div>
+                        <div class="product-description">
+                            @product.Description
+                        </div>
+                        <span class="post">POST BY: ADMIN</span><span class="comments">COMMENTS @randomNumber</span>
+                    </div>
+                }
+            </div>
+        }
     </div>
 </section>
