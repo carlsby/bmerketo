@@ -5,26 +5,7 @@
 <p>3. Starta sedan programmet.</p>
 <hr>
 <h2 align="center"><ins>Inloggning</ins></h2>
-<h4 align="center">Det finns två färdiga admin-profiler. Dessa är: </h4>
-
-<table align="center">
-    <thead>
-        <tr>
-            <th align="left">Email:</th>
-            <th align="center">Lösenord:</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td align="left">carlandersson99@outlook.com</td>
-            <td align="center">Bytmig123!</td>
-        </tr>
-             <tr>
-            <td align="left">berand@outlook.com</td>
-            <td align="center">Bertil123!</td>
-        </tr>
-    </tbody>
-</table>
+<h4 align="center">Just nu finns det inga konton i databasen. Det första kontot som skapas tilldelas admin. </h4>
 
 <hr>
 <h2 align="center"><ins>Startsidan</ins><br></h2><h4 align="center">(Det går att trycka på alla produkter för att komma till deras specifika produktsida)</h4>
