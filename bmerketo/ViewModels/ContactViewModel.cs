@@ -6,7 +6,7 @@ namespace bmerketo.ViewModels
     public class ContactViewModel
     {
         [Required(ErrorMessage = "You have to enter your name")]
-        [RegularExpression(@"^[a-öA-Ö]+(?:[ é'-][a-öA-Ö]+)$", ErrorMessage = "You have to enter a valid name")]
+        [RegularExpression(@"^[a-öA-Ö]+(?:[ é'-][a-öA-Ö]+)*$", ErrorMessage = "You have to enter a valid name")]
         [Display(Name = "Name")]
         public string FullName { get; set; } = null!;
 
